@@ -1,0 +1,27 @@
+<Task ID="30005" Memo="关于“海神马”问问皮克司吧!" TargetMap="11206">
+   	<Procedure> 
+		<Step ID="3" ParentList="0" ParentCost="0" >
+    		<Event Memo="" TargetMap="11206">
+  				<Trigger>
+					<Item Type="GDOC_ACCEPT" />
+				</Trigger>
+    				<Action Type="COMMAND" Command="NOTHING" SkipTrigger="Y" /> 
+    		</Event>
+		</Step>
+  		<Step ID="1" ParentList="3" ParentCost="1" >
+    		<Event Memo="关于“海神马”问问皮克司吧!" TargetMap="11206" >
+  				<Trigger>				
+					<Item Type="NPC_OPTION" MapID="11206" ObjID="12" TaskOption="调查【海神马】" />									
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="12" ImageID="5" Info="不知是“神马”外星精灵所以叫做【海神马】，\n哈哈~~多直接的名字，有我的风格！" />	
+					<Option Info="（■_,■）" />
+				</Action>
+				<Action Type="TALK">	
+					<Msg NpcID="12" ImageID="1" Info="【海神马】在【周三12:00-13：00 周六19：00-21：00】会“降临”【麦田村·海底洞穴1层 】。\n祝你好运！" />												
+					<Option Info="马上去【麦田村】！" />
+				</Action>															
+    		</Event>
+		</Step>	
+	</Procedure>
+</Task>

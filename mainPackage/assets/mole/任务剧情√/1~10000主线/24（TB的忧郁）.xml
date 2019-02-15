@@ -1,0 +1,408 @@
+<Task ID="24" Memo="麦田村的cTBc寄来了新邮件——好像非常着急~~小主人快看看邮箱吧！" TargetMap="11405">
+   	<Procedure> 	
+  		<Step ID="1" ParentList="0" ParentCost="0" >
+    		<Event Memo="麦田村的cTBc寄来了新邮件——好像非常着急~~小主人快看看邮箱吧！" TargetMap="11405">
+  				<Trigger>
+					<Item Type="ENTER_MAP" MapID="11405" />						
+					<Item Type="NPC_OPTION" MapID="11405" ObjID="36" TaskOption="TB我来啦^^！" />			
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="2" Info="【@nick】收到了TB 的“飞鸽信件”来看TB吗？TB太高兴了^_^。\nTB可以跟你说件事吗……？" />		
+					<Option Info="嗯，说吧！" SkipTrigger="Y" />
+					<Option Info="我很忙，下次吧" NextStep="1" />
+				</Action>
+    		</Event>
+		</Step>
+  		<Step ID="3" ParentList="1" ParentCost="1" >
+    		<Event Memo="麦田村的cTBc寄来了新邮件——好像非常着急~~小主人快看看邮箱吧！" TargetMap="11405">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11405" ObjID="36" TaskOption="嗯，说吧！" />			
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="1" Info="TB的爸爸是【弗雷基港】【T•商会】的“掌舵人”。\nTB是【T家族】的独生子，商会的未来继承人。" />		
+					<Msg NpcID="36" ImageID="1" Info="可是爸爸的商会最近遇上了麻烦，\n【弗雷基港】出现了抢星豆的“怪盗路霸戈戈拉”。" />		
+					<Msg NpcID="36" ImageID="4" Info="这个月的家长会爸爸又不能来参加了……【路迪老师】……" />		
+					<Msg NpcID="36" ImageID="1" Info="TB希望用【所有的零用钱】，\n委托【@nick】打败【怪盗戈戈拉】，帮助【T•商会】……" />																							
+					<Option Info="我还不够强……" NextStep="4" SkipTrigger="Y" NotUpdateBuffer="Y" />
+					<Option Info="一言为定！" NextStep="5" SkipTrigger="Y" />
+					<Option Info="朋友不收你钱^^" NextStep="6" SkipTrigger="Y" />										
+				</Action>
+    		</Event>
+		</Step>	
+  		<Step ID="4" ParentList="3" ParentCost="1" >
+    		<Event Memo="麦田村的cTBc寄来了新邮件——好像非常着急~~小主人快看看邮箱吧！" TargetMap="11405">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11405" ObjID="36" TaskOption="我还不够强……" />			
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="1" Info="……不是的，书里都是这样写的，" />		
+					<Msg NpcID="36" ImageID="1" Info="【未来超摩尔@nick】一定可以办到的，【@nick】是帮助爸爸的最好人选！" />		
+					<Msg NpcID="36" ImageID="1" Info="TB愿意拿出【所有的零用钱】，\n委托【@nick】打败【怪盗戈戈拉】！" />		
+					<Option Info="一言为定！" NextStep="5" SkipTrigger="Y" />
+					<Option Info="朋友不收你钱^^" NextStep="6" SkipTrigger="Y" />	
+					<Option Info="我很忙，下次吧" NextStep="7" SkipTrigger="Y" NotUpdateBuffer="Y" />															
+				</Action>
+    		</Event>
+		</Step>
+		
+				
+  		<Step ID="5" ParentList="3, 4" ParentCost="1" >
+    		<Event Memo="麦田村的cTBc寄来了新邮件——好像非常着急~~小主人快看看邮箱吧！" TargetMap="11405">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11405" ObjID="36" TaskOption="一言为定！" />			
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="2" Info="真的吗？！太好了！【@nick】也许有未来超能力，不过还是要小心啊！" />		
+					<Msg NpcID="36" ImageID="2" Info="如果打败了怪盗路霸，\n帮TB问下爸爸这次家长会可以来吗？\n爸爸一定在【弗雷基商会】里。" />																								
+					<Msg NpcID="36" ImageID="2" Info="指南针地图里东→南↓方的海港就是弗雷基港。\n【@nick】加油！我在这里等着你！" />	
+					<Option Info="TB等我好消息！" />									
+				</Action>								
+     			<Action Type="COMMAND" Command="SET_STA_1" Params="a1" />
+    		</Event>
+		</Step>   <!--5输出TB的零用钱↓--><!--  提交节点1  -->
+				
+  		<Step ID="6" ParentList="3, 4" ParentCost="1" >
+    		<Event Memo="麦田村的cTBc寄来了新邮件——好像非常着急~~小主人快看看邮箱吧！" TargetMap="11405">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11405" ObjID="36" TaskOption="朋友不收钱^^" />			
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="2" Info="真的吗？！太好了！【@nick】也许有未来超能力，不过还是要小心啊！" />		
+					<Msg NpcID="36" ImageID="2" Info="如果打败了怪盗路霸，\n帮TB问下爸爸这次家长会可以来吗？\n爸爸一定在【弗雷基商会】里。" />																								
+					<Msg NpcID="36" ImageID="2" Info="指南针地图里东→南↓方的海港就是弗雷基港。\n【@nick】加油！我在这里等着你！" />																							
+					<Option Info="TB等我好消息！" />										
+				</Action>							
+    		</Event>
+		</Step>	<!--6不输出TB的零用钱↓-->	
+		
+  		<Step ID="7" ParentList="0" ParentCost="1" >
+    		<Event Memo="麦田村的cTBc寄来了新邮件——好像非常着急~~小主人快看看邮箱吧！" TargetMap="11405">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11405" ObjID="36" TaskOption="我很忙，下次吧" />			
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="1" Info="……嗯，好吧……为了T商会，我会积攒更多零用钱的……" />		
+					<Option Info="嗯……" NextStep="3" />
+				</Action>
+    		</Event>
+		</Step>
+
+
+
+
+  		<Step ID="40" ParentList="5" ParentCost="1" >
+    		<Event Memo="" TargetMap=""> 
+  				<Trigger>
+					<Item Type="ENTER_MAP" MapID="21306" />	
+				</Trigger>
+    			<Action Type="COMMAND" Command="ROLL_CAMERA" Params="478, 791" />	
+    			<Action Type="COMMAND" Command="DELAY" Params="1000" /> 							
+    			<Action Type="COMMAND" Command="RESTORE_CAMERA" />				
+    		</Event>			
+		</Step>
+  		<Step ID="41" ParentList="6" ParentCost="1" >
+    		<Event Memo="" TargetMap=""> 
+  				<Trigger>
+					<Item Type="ENTER_MAP" MapID="21306" />	
+				</Trigger>
+    			<Action Type="COMMAND" Command="ROLL_CAMERA" Params="478, 791" />	
+    			<Action Type="COMMAND" Command="DELAY" Params="1000" /> 							
+    			<Action Type="COMMAND" Command="RESTORE_CAMERA" />				
+    		</Event>			
+		</Step>
+
+
+
+
+  		<Step ID="50" ParentList="5" ParentCost="1" >
+    		<Event Memo="" TargetMap="">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11405" ObjID="36" TaskOption="弗雷基港的怪盗路霸" />			
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="1" Info="……为了【T·商会】，看来我要积攒更多的零用钱……" />		
+					<Msg NpcID="36" ImageID="2" Info="指南针地图里东→南↓的方向海港就是【弗雷基港】。\n【@nick】加油！我在这里等着你！" />	
+					<Option Info="TB等我好消息！" NextStep="50" />
+				</Action>
+    		</Event>
+		</Step>
+  		<Step ID="51" ParentList="6" ParentCost="1" >
+    		<Event Memo="" TargetMap="">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11405" ObjID="36" TaskOption="弗雷基港的怪盗路霸" />			
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="1" Info="……为了【T·商会】，看来我要积攒更多的零用钱……" />		
+					<Msg NpcID="36" ImageID="2" Info="指南针地图里东→南↓的方向海港就是【弗雷基港】。\n【@nick】加油！我在这里等着你！" />	
+					<Option Info="TB等我好消息！" NextStep="51" />
+				</Action>
+    		</Event>
+		</Step>
+		
+		
+<!--打迪迪拉↓-->
+
+  		<Step ID="11" ParentList="5, 6" ParentCost="1" >
+    		<Event Memo="c怪盗戈戈拉c竟然在c弗雷基港c当起了“路霸”！不可原谅！代表TB消灭你们！" TargetMap="11603">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="21306" ObjID="314" TaskOption="请问你们在抢钱吗？" />							
+				</Trigger>				
+				<Action Type="TALK">	
+					<Msg NpcID="314" ImageID="1" Info="没看到我们每天“站岗”很辛苦吗！\n不交星豆就挨揍！" />	
+					<Msg NpcID="315" ImageID="1" Info="YOU（你） and（和）ME（我）~~\n带着口罩一起抢遍格历尔平原——" />		
+					<Msg NpcID="315" ImageID="1" Info="怨恨吧，羡慕吧，可怜的摩尔啊~~\n戈戈拉大哥最高最大！！" />							
+					<Option Info="别抢我"  NextStep="12" SkipTrigger="Y" NotUpdateBuffer="Y" />																			
+					<Option Info="来战！" />					
+				</Action>	
+				<Action Type="TALK">
+					<Msg NpcID="314" ImageID="1" Info="“神吗”？不服？\n我们【怪 盗】☆专 治 不 服☆！" />		
+					<Msg NpcID="314" ImageID="1" Info="慢着——！\n你数到3我们就正式开打！" />	
+					<Msg NpcID="315" ImageID="1" Info="（大哥我们快组队！）" />																														
+					<Option Info="好吧（- -）！" />					
+				</Action>								
+    		</Event>
+		</Step>
+
+  		<Step ID="12" ParentList="0" ParentCost="1" >
+    		<Event Memo="c怪盗戈戈拉c竟然在c弗雷基港c当起了“路霸”！不可原谅！代表TB消灭你们！" TargetMap="11603">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="21306" ObjID="314" TaskOption="请问你们在抢钱吗？" />		
+				</Trigger>				
+				<Action Type="TALK">	
+					<Msg NpcID="315" ImageID="1" Info="不抢你星豆就让你通过是怪盗精灵的耻辱~\n因为我们是怪盗精灵~所以我们要抢星豆~！！！" />																													
+					<Option Info="……" NextStep="11" />
+				</Action>					
+    		</Event>
+		</Step>
+
+  		<Step ID="13" ParentList="11" ParentCost="1" >
+    		<Event Memo="c怪盗戈戈拉c竟然在c弗雷基港c当起了“路霸”！不可原谅！代表TB消灭你们！" TargetMap="11603">
+  				<Trigger>						
+					<Item Type="NPC_OPTION" MapID="21306" ObjID="314" TaskOption="我准备好了！" />	
+				</Trigger>				
+                <Action Type="COMMAND" Command="BATTLE" Params="5" />					
+    		</Event>
+		</Step>
+		
+  		<Step ID="14" ParentList="13" ParentCost="1"  >
+			<Condition>
+				<Battle ID="5" Count="1" />				
+			</Condition>
+    		<Event ConditionType="IN" Memo="c怪盗戈戈拉c竟然在c弗雷基港c当起了“路霸”！不可原谅！代表TB消灭你们！" TargetMap="11603">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="21306" ObjID="314" TaskOption="服不服？" />		
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="314" ImageID="1" Info="其实，\n我天天守在这里，\n就是为了遇到有实力的摩尔——~~" />
+					<Msg NpcID="315" ImageID="1" Info="（大哥真会“找台阶”！不愧是大哥！）" />					
+					<Msg NpcID="314" ImageID="1" Info="我决定把一半星豆分给你！\n（T T）勇士以后请多多关照——！\n（泪流满面）" />
+					<Option Info="（■_,■）" />
+				</Action>			
+				<Action Type="COMMAND" Command="ADD_MAP_OBJ_1" Params="21306, 315" />				
+    		</Event><!--  提交节点2  -->	
+    		<Event ConditionType="OUT" Memo="c怪盗戈戈拉c竟然在c弗雷基港c当起了“路霸”！不可原谅！代表TB消灭你们！" TargetMap="11603">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="21306" ObjID="314" TaskOption="让我去弗雷基港" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="314" ImageID="1" Info="YOU（你） YOU（你） YOU（你） ！\n想过去的都把星豆留下！" />		
+					<Msg NpcID="314" ImageID="1" Info="没看到我们每天“站岗”很辛苦吗！\n不交星豆？\n除非打赢我！" />	
+					<Option Info="别抢我"  NextStep="18" SkipTrigger="Y" NotUpdateBuffer="Y" />																			
+					<Option Info="来战！" />					
+				</Action>					
+                <Action Type="COMMAND" Command="BATTLE" Params="5" />									
+    		</Event>		
+		</Step>
+  		<Step ID="63" ParentList="11" ParentCost="1" >
+			<Condition>
+				<Battle ID="5" Count="1" />				
+			</Condition>
+    		<Event ConditionType="IN" Memo="c怪盗戈戈拉c竟然在c弗雷基港c当起了“路霸”！不可原谅！代表TB消灭你们！" TargetMap="11603">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="21306" ObjID="314" TaskOption="服不服？" />		
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="314" ImageID="1" Info="其实，\n我天天守在这里，\n就是为了遇到有实力的摩尔——~~" />
+					<Msg NpcID="315" ImageID="1" Info="（大哥真会“找台阶”！不愧是大哥！）" />					
+					<Msg NpcID="314" ImageID="1" Info="我决定把一半星豆分给你！\n（T T）勇士以后请多多关照——！\n（泪流满面）" />
+					<Option Info="（■_,■）" />
+				</Action>			
+				<Action Type="COMMAND" Command="ADD_MAP_OBJ_1" Params="21306, 315" />				
+    		</Event><!--  提交节点2  -->	
+    		<Event ConditionType="OUT" Memo="c怪盗戈戈拉c竟然在c弗雷基港c当起了“路霸”！不可原谅！代表TB消灭你们！" TargetMap="11603">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="21306" ObjID="314" TaskOption="让我去弗雷基港" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="314" ImageID="1" Info="YOU（你） YOU（你） YOU（你） ！\n想过去的都把星豆留下！" />		
+					<Msg NpcID="314" ImageID="1" Info="没看到我们每天“站岗”很辛苦吗！\n不交星豆？\n除非打赢我！" />	
+					<Option Info="别抢我"  NextStep="18" SkipTrigger="Y" NotUpdateBuffer="Y" />																			
+					<Option Info="来战！" />					
+				</Action>					
+                <Action Type="COMMAND" Command="BATTLE" Params="5" />									
+    		</Event>		
+		</Step>		
+		
+		
+  		<Step ID="18" ParentList="0" ParentCost="1" >
+    		<Event Memo="c怪盗戈戈拉c竟然在c弗雷基港c当起了“路霸”！不可原谅！代表TB消灭你们！" TargetMap="11603">
+  				<Trigger>						
+					<Item Type="NPC_OPTION" MapID="21306" ObjID="314" TaskOption="我准备好了！" />	
+				</Trigger>		
+				<Action Type="TALK">						
+					<Msg NpcID="315" ImageID="1" Info="不抢你星豆就让你通过是怪盗精灵的耻辱~\n因为我们是怪盗精灵~所以我们要抢星豆~！！！" />																													
+					<Option Info="……" NextStep="14" />	
+				</Action>								
+    		</Event>
+		</Step>
+
+
+
+
+
+
+
+  		<Step ID="15" ParentList="14, 63, 13" ParentCost="1" SkipList="13" >
+			<Condition>
+				<Buffer Sta1="a1" /> 			
+			</Condition>
+    		<Event ConditionType="IN" Memo="小主人又胜利了^!可以进入弗雷基港了！\n快去c弗雷基商会c问问TB的爸爸回不回麦田村开家长会吧！" TargetMap="11602">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11602" ObjID="48" TaskOption="请问您是TB的爸爸？" />							
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="48" ImageID="1" Info="……。我不是。" />																											
+					<Option Info="你就是" />					
+				</Action>	
+				<Action Type="TALK">
+					<Msg NpcID="48" ImageID="1" Info="给个理由先。" />																											
+					<Option Info="看名字" />	
+					<Option Info="看长相" />										
+				</Action>				
+				<Action Type="TALK">
+					<Msg NpcID="48" ImageID="1" Info="有点意思。看你的样子是【勇士协会】的。" />	
+					<Msg NpcID="48" ImageID="1" Info="听艾比说你用了10分钟就把路霸怪盗组解决了。" />																															
+					<Option Info="TB让我来协助你" SkipTrigger="Y" />					
+				</Action>								
+    		</Event>
+    		<Event ConditionType="OUT" Memo="小主人又胜利了^!可以进入弗雷基港了！\n快去c弗雷基商会c问问TB的爸爸回不回麦田村开家长会吧！" TargetMap="11602">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11602" ObjID="48" TaskOption="请问您是TB的爸爸？" />							
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="48" ImageID="1" Info="……。我不是。" />																											
+					<Option Info="你就是" />					
+				</Action>	
+				<Action Type="TALK">
+					<Msg NpcID="48" ImageID="1" Info="给个理由先。" />																											
+					<Option Info="看名字" />	
+					<Option Info="看长相" />										
+				</Action>				
+				<Action Type="TALK">
+					<Msg NpcID="48" ImageID="1" Info="有点意思。看你的样子是【勇士协会】的。" />	
+					<Msg NpcID="48" ImageID="1" Info="听艾比说你用了10分钟就把路霸怪盗组解决了。" />																															
+					<Option Info="TB让我来协助你" NextStep="27" SkipTrigger="Y" />					
+				</Action>								
+    		</Event>			
+		</Step>
+		
+		
+		
+		
+		
+		
+
+  		<Step ID="16" ParentList="15" ParentCost="1" >
+    		<Event Memo="小主人又胜利了^!可以进入弗雷基港了！\n快去c弗雷基商会c问问TB的爸爸回不回麦田村开家长会吧！" TargetMap="11602">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11602" ObjID="48" TaskOption="关于TB的委托" />							
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="48" ImageID="1" Info="TB又委托了有趣的家伙啊~！" />	
+					<Msg NpcID="48" ImageID="1" Info="你鼓鼓的星豆袋里装的是TB的零用钱吧？之前的委托人都收了TB的零用钱，但不能成为【TB真正的朋友】。" />																											
+					<Msg NpcID="48" ImageID="1" Info="看来小tb还要继续努力啊——去寻找真正的好朋友吧——哈哈！" />
+					<Msg NpcID="48" ImageID="1" Info="既然TB已经支付给你委托金了，我就不给了，这就是“做买卖的规矩”。" />
+					<Option Info="对了【TB的家长会】" />					
+				</Action>
+				<Action Type="TALK">
+					<Msg NpcID="48" ImageID="1" Info="商会太忙了，去不了了，帮我转告TB吧~" />	
+					<Option Info="好吧" />					
+				</Action>										
+    		</Event>
+		</Step>		
+		
+
+
+
+  		<Step ID="27" ParentList="26" ParentCost="1" >
+    		<Event Memo="小主人又胜利了^!可以进弗雷基港看看了！说不定可以见到TB的爸爸——你的《旅行记事本》" TargetMap="11602">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11602" ObjID="48" TaskOption="关于TB的委托" />							
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="48" ImageID="1" Info="TB又委托了有趣的家伙啊~！" />	
+					<Msg NpcID="48" ImageID="1" Info="看你的星豆袋瘪瘪的，没有收TB的零用钱吧？之前的委托人都收了TB的零用钱，所以不能成为【TB真正的朋友】。" />																											
+					<Msg NpcID="48" ImageID="1" Info="看来小tb很幸运——终于找到了真正的好朋友——哈哈！" />
+					<Msg NpcID="48" ImageID="1" Info="你的【委托星豆】就由我来支付给你。\n去麦田村告诉TB完成委托吧。" />
+					<Option Info="对了【TB的家长会】" />					
+				</Action>	
+				<Action Type="TALK">
+					<Msg NpcID="48" ImageID="1" Info="商会太忙了，去不了了，帮我转告TB吧~" />	
+					<Option Info="好吧" />					
+				</Action>										
+    		</Event>
+		</Step>	
+
+		
+<!--回去找TB↓-->
+
+  		<Step ID="60" ParentList="27, 50, 51" ParentCost="1" >
+    		<Event Memo="怪盗解决也见到TB的爸爸了——快回麦田村告诉TB吧！" TargetMap="11405">
+  				<Trigger>				
+					<Item Type="NPC_OPTION" MapID="11405" ObjID="36" TaskOption="TB我回来了^^！" />								
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="1" Info="……为了【T·商会】，看来我要积攒更多的零用钱……" />		
+					<Option Info="我解决怪盗路霸了！" />					
+				</Action>
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="2" Info="我就知道【@nick】的话一定可以的！\n强烈要求抱一下！！（≥w≤）！" />	
+					<Option Info="O(∩_∩)O哈哈！" />				
+				</Action>
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="2" Info="【@nick】见到爸爸了吗？\n他会来开家长会吗？" />	
+					<Option Info="你爸爸说他不来了" />				
+				</Action>	
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="2" Info="这就是爸爸……\n【@nick】以后多来找我玩儿吧！" />	
+					<Option Info="~\(≧▽≦)/~" />				
+				</Action>																	
+    		</Event>
+		</Step>	
+		
+		
+  		<Step ID="61" ParentList="16, 50, 51" ParentCost="1" >
+    		<Event Memo="怪盗解决也见到TB的爸爸了——快回麦田村告诉TB吧！" TargetMap="11405">
+  				<Trigger>				
+					<Item Type="NPC_OPTION" MapID="11405" ObjID="36" TaskOption="TB我回来了^^！" />								
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="1" Info="……为了【T·商会】，看来我要积攒更多的零用钱……" />		
+					<Option Info="我解决怪盗路霸了！" />					
+				</Action>
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="2" Info="我就知道【@nick】的话一定可以的！\n强烈要求抱一下！！（≥w≤）！" />	
+					<Option Info="O(∩_∩)O哈哈！" />				
+				</Action>
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="2" Info="【@nick】见到爸爸了吗？\n他会来开家长会吗？" />	
+					<Option Info="你爸爸说他不来了" />				
+				</Action>	
+				<Action Type="TALK">
+					<Msg NpcID="36" ImageID="2" Info="这就是爸爸……\n【@nick】以后多来找我玩儿吧！" />	
+					<Option Info="~\(≧▽≦)/~" />				
+				</Action>																	
+    		</Event>
+		</Step>			
+	</Procedure>
+</Task>

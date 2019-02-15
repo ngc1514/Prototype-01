@@ -1,0 +1,30 @@
+<Task ID="30006" Memo="关于“咕噜蝶”问问皮克司吧!" TargetMap="11206">
+   	<Procedure> 
+		<Step ID="1" ParentList="0" ParentCost="0" >
+    		<Event Memo="" TargetMap="11202">
+  				<Trigger>
+					<Item Type="GDOC_ACCEPT" />
+				</Trigger>
+    				<Action Type="COMMAND" Command="NOTHING" SkipTrigger="Y" /> 
+    		</Event>
+		</Step>
+  		<Step ID="2" ParentList="1" ParentCost="1" >
+    		<Event Memo="关于“咕噜蝶”问问皮克司吧!" TargetMap="11206" >
+  				<Trigger>				
+					<Item Type="NPC_OPTION" MapID="11206" ObjID="12" TaskOption="调查【咕噜蝶】" />									
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="12" ImageID="1" Info="【咕噜蝶】是一种常见的美丽精灵，我真想看看她优美的舞姿。" />	
+					<Msg NpcID="12" ImageID="2" Info="记得它常常在【皇宫花园】出现，你去问问那边的士兵，应该会得到一些消息的。" />																															
+					<Option Info="哪个士兵？" />
+				</Action>
+				<Action Type="TALK">	
+					<Msg NpcID="12" ImageID="1" Info="嘿嘿，士兵们对【咕噜蝶】都是见怪不怪的，随便抓一个问问就知道了~" />
+					<Msg NpcID="12" ImageID="1" Info="另外，【皇宫花园】在【摩尔城堡吊桥】往上走，地图上无法直接传送到，可不要迷路了哦~" />												
+					<Option Info="马上去【皇宫花园】！" />
+				</Action>															
+    		</Event>
+		</Step>	
+	</Procedure>
+</Task>
+

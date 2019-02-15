@@ -1,0 +1,100 @@
+<Task ID="2" Memo="琪琪姐姐和皮皮克克嘱咐找村长大人，咦怎么回事？大家一起来找村长的神杖吧！" TargetMap="11103">
+   	<Procedure>
+  		<Step ID="1" ParentList="0" ParentCost="0" >
+    		<Event Memo="c村长的神杖c找不到了，名侦探！快在c村长家c好好找找神杖在哪里吧！" TargetMap="11102">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11103" ObjID="5" TaskOption="琪琪姐让我找您" />		
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="5" ImageID="7" Info="……你说什么？\n我只想找回心爱的神杖，\n没找到神杖之前谁也别找我！" />
+					<Option Info="我来找找看！" />
+				</Action>								
+    		</Event>
+		</Step>
+  		<Step ID="6" ParentList="1" ParentCost="1" >
+    		<Event Memo="c村长的神杖c找不到了，名侦探！快在c村长家c好好找找神杖在哪里吧！" TargetMap="11102">				
+				<Action Type="COMMAND" Command="ADD_MAP_OBJ_1" Params="11103,16001" />		
+			</Event>
+		</Step>		
+  		<Step ID="2" ParentList="6" ParentCost="1" >
+    		<Event Memo="村长的神杖找不到了，名侦探！快在村长家好好找找神杖在哪里吧！" TargetMap="11102">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11103" ObjID="16001" />
+				</Trigger>					
+    			<Action Type="COMMAND" Command="REMOVE_MAP_OBJ" Params="11103, 16001" />
+   				<Action Type="COMMAND" Command="OUTPUT_ITEM_1" Params="260002" />		
+			</Event>
+		</Step>
+  		<Step ID="3" ParentList="1" ParentCost="1" >
+			<Condition>
+				<Item ID="260002" Count="1" />
+			</Condition>
+    		<Event ConditionType="IN" Memo="土豆神杖找到了！在c旅行箱的“问号背包”里c，这就去给奇普力村长爷爷吧！" TargetMap="11103">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11103" ObjID="5" TaskOption="找到神杖了！" />
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="5" ImageID="1" Info="喔！【@nick】找到我的拐杖了？哦不，神杖了啊！" />
+					<Option Info="给你神杖"/>
+				</Action>
+   				<Action Type="COMMAND" Command="REJECT_ITEM" Params="260002" NextStep="4" SkipTrigger="Y"  />
+    		</Event>
+    		<Event ConditionType="OUT" Memo="c村长的神杖c找不到了，\n名侦探的我在c村长家c好好找找神杖在哪里吧！" TargetMap="11103">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11103" ObjID="5" TaskOption="【土豆神杖】找不到" />
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="5" ImageID="1" Info="再找不到拐杖我也要变成黑化的精灵了！" />
+					<Option Info="您今天去过哪里呢？" />
+				</Action>
+				<Action Type="TALK">
+					<Msg NpcID="5" ImageID="1" Info="……在家里的摇椅上蹲了一整天，\n【没出过房间】呐……嚯嚯……" />
+					<Option Info="应该就在房间里！" NotUpdateBuffer="Y" />
+				</Action>									
+			</Event>
+		</Step>
+  		<Step ID="4" ParentList="3" ParentCost="1" >
+    		<Event Memo="找到神杖了，村长爷爷也“恢复正常了”\nc快和村长爷爷聊聊吧！c" TargetMap="11103">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11103" ObjID="5" TaskOption="村长爷爷好！" />
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="5" ImageID="1" Info="嚯嚯…………唔……我开心了，\n给你看看只有村长才有的好东西！" />
+					<Msg NpcID="5" ImageID="1" Info="这是超超超重的【亚力山大之剑】，\n它很珍贵因为它重的要死——\n绝对没人拿得动它，嚯嚯嚯嚯……" />
+					<Option Info="让我试试！" />
+				</Action>
+				<Action Type="TALK">
+					<Msg NpcID="5" ImageID="1" Info="嚯嚯嚯嚯开什么玩笑~，\n你要拿得动它我就送给你~!" />
+					<Msg NpcID="5" ImageID="1" Info="顺便连我的【普豆神之盾】一并奉送~" />
+					<Option Info="这可是你说的！" />					
+				</Action>	
+				<Action Type="MOVIE" Url="task_2_1.swf" MapLevel="TASK" Pos="0,0" />						
+    		</Event>
+		</Step>	
+  		<Step ID="5" ParentList="4" ParentCost="1" >
+			<Condition>
+				<Person Equipment="130005" />	
+			</Condition>
+    		<Event ConditionType="IN" Memo="很重很重的亚力山大之剑没人可以拿得动？让我“流言终结者”拿起c旅行箱c里的c亚力山大之剑c给村长瞧瞧！" TargetMap="11103">
+				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11103" ObjID="5" TaskOption="我拿起亚历山大之剑了" />
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="5" ImageID="1" Info="……    ……   ……   ……它们是你的了，（T_T）……拿去好好使用吧————！" />
+					<Option Info="^_^谢谢村长爷爷" />
+				</Action>	
+    		</Event>
+    		<Event ConditionType="OUT" Memo="很重很重的亚力山大之剑没人可以拿得动？让我“流言终结者”拿起c旅行箱c里的c亚力山大之剑c给村长瞧瞧！" TargetMap="11103">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11103" ObjID="5" TaskOption="那个亚历山大之剑" />
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="5" ImageID="1" Info="嚯嚯嚯……“亚历山大之剑”不是已经在你的【旅行箱】里了吗？" />
+					<Msg NpcID="5" ImageID="1" Info="如果是“亚历山大之剑”认可的主人。\n【点击】它就能【装备】上它。" />
+					<Option Info="这就拿给你看！" />
+				</Action>
+				<Action Type="MOVIE" Url="task_2_1.swf" MapLevel="TASK" Pos="0,0" />				
+			</Event>			
+		</Step>
+	</Procedure>
+</Task>

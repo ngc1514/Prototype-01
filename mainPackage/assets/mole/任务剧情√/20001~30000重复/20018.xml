@@ -1,0 +1,300 @@
+<Task ID="20018" Memo="c修炼之域c的挑战，请前往c勇者斗技场c向c圣弗雷德c了解详细情况。" TargetMap="11219">
+	<Procedure>
+		<Step ID="1" ParentList="0" ParentCost="0">
+			<Event Memo="c修炼之域c的挑战，请前往c勇者斗技场c向c圣弗雷德c了解详细情况。" TargetMap="11219">
+				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="新的挑战？" />
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="根据勇士协会的规定：\n超过【30级】的摩尔，需要接受【修炼之域】的挑战！" />
+					<Msg NpcID="38" ImageID="1" Info="击败【修炼之域】中的【15域】【20域】【25域】【30域】的【守关士兵】会获得【荣誉之证】，请把【荣誉之证】带给我。" />
+					<Msg NpcID="38" ImageID="1" Info="友情提示：\n越困难的战斗，获得的【荣誉之证】数量也越多。我会根据你带回来的【荣誉之证】数量给予你不同的奖励！" />
+					<Option Info="好的！" />
+				</Action>
+			</Event>
+		</Step>
+		
+		<Step ID="2" ParentList="1" ParentCost="1">
+			<Event Memo="前往c修炼之域c接受挑战吧！如果你获得c荣誉之证c，请返回c斗技场管理处向圣弗雷德c复命。" TargetMap="11219">
+				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="勇士斗技场？" />
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你带回来几个【荣誉之证】呢？还是被【打飞】 回来了？" />
+					<Option Info="怎么获得荣誉之证？" NextStep="13" SkipTrigger="Y" NotUpdateBuffer="Y"/>
+					<Option Info="1个" NextStep="3" SkipTrigger="Y" NotUpdateBuffer="Y"/>
+					<Option Info="2个" NextStep="4" SkipTrigger="Y" NotUpdateBuffer="Y"/>
+					<Option Info="3个" NextStep="5" SkipTrigger="Y" NotUpdateBuffer="Y"/>
+					<Option Info="4个" NextStep="6" SkipTrigger="Y" NotUpdateBuffer="Y"/>
+					<Option Info="5个" NextStep="7" SkipTrigger="Y" NotUpdateBuffer="Y"/>
+					<Option Info="6个" NextStep="8" SkipTrigger="Y" NotUpdateBuffer="Y"/>
+					<Option Info="7个" NextStep="9" SkipTrigger="Y" NotUpdateBuffer="Y"/>
+					<Option Info="8个" NextStep="10" SkipTrigger="Y" NotUpdateBuffer="Y"/>
+					<Option Info="9个" NextStep="11" SkipTrigger="Y" NotUpdateBuffer="Y"/>
+					<Option Info="10个" NextStep="12" SkipTrigger="Y" NotUpdateBuffer="Y"/>
+				</Action>
+			</Event>
+		</Step>
+<!--奖励输出-->
+		<Step ID="3" ParentList="2" ParentCost="1">
+			<Condition>
+				<Item ID="180049" Count="1" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="" TargetMap="11219">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务完成！" />
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你确认要完成今天的挑战吗？\n如果你获得更多的荣誉之证，我会给予你更多的【经验值】！" />									
+					<Option Info="完成挑战！" />	
+					<Option Info="让我再想想" NextStep="2"/>										
+				</Action>						
+    		</Event>
+    		<Event ConditionType="OUT" Memo="未完成任务！" TargetMap="11219">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务未完成" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你的【荣誉之证】数量不足，别想蒙混过关！\n收集到足够的【荣誉之证】再来找我吧！" />													
+					<Option Info="立刻就去" NextStep="2"/>	 																											
+				</Action>						
+    		</Event>			
+		</Step>
+		
+		<Step ID="4" ParentList="2" ParentCost="1">
+			<Condition>
+				<Item ID="180049" Count="2" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="完成任务！" TargetMap="11219">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务完成！" />
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你确认要完成今天的挑战吗？\n如果你获得更多的荣誉之证，我会给予你更多的【经验值】！" />									
+					<Option Info="完成挑战！" />	
+					<Option Info="让我再想想" NextStep="2"/>										
+				</Action>						
+    		</Event>
+    		<Event ConditionType="OUT" Memo="未完成任务！" TargetMap="11219">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务未完成" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你的【荣誉之证】数量不足，别想蒙混过关！\n收集到足够的【荣誉之证】再来找我吧！" />													
+					<Option Info="立刻就去" NextStep="2"/>	 																											
+				</Action>						
+    		</Event>			
+		</Step>
+		
+		<Step ID="5" ParentList="2" ParentCost="1">
+			<Condition>
+				<Item ID="180049" Count="3" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="完成任务！" TargetMap="11219">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务完成！" />
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你确认要完成今天的挑战吗？\n如果你获得更多的荣誉之证，我会给予你更多的【经验值】！" />									
+					<Option Info="完成挑战！" />	
+					<Option Info="让我再想想" NextStep="2"/>										
+				</Action>						
+    		</Event>
+    		<Event ConditionType="OUT" Memo="未完成任务！" TargetMap="11219">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务未完成" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你的【荣誉之证】数量不足，别想蒙混过关！\n收集到足够的【荣誉之证】再来找我吧！" />													
+					<Option Info="立刻就去" NextStep="2"/>	 																											
+				</Action>						
+    		</Event>			
+		</Step>
+		
+		<Step ID="6" ParentList="2" ParentCost="1">
+			<Condition>
+				<Item ID="180049" Count="4" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="完成任务！" TargetMap="11219">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务完成！" />
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你确认要完成今天的挑战吗？\n如果你获得更多的荣誉之证，我会给予你更多的【经验值】！" />									
+					<Option Info="完成挑战！" />	
+					<Option Info="让我再想想" NextStep="2"/>										
+				</Action>						
+    		</Event>
+    		<Event ConditionType="OUT" Memo="未完成任务！" TargetMap="11219">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务未完成" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你的【荣誉之证】数量不足，别想蒙混过关！\n收集到足够的【荣誉之证】再来找我吧！" />													
+					<Option Info="立刻就去" NextStep="2"/>	 																											
+				</Action>						
+    		</Event>			
+		</Step>
+		
+		<Step ID="7" ParentList="2" ParentCost="1">
+			<Condition>
+				<Item ID="180049" Count="5" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="完成任务！" TargetMap="11219">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务完成！" />
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你确认要完成今天的挑战吗？\n如果你获得更多的荣誉之证，我会给予你更多的【经验值】！" />									
+					<Option Info="完成挑战！" />	
+					<Option Info="让我再想想" NextStep="2"/>										
+				</Action>						
+    		</Event>
+    		<Event ConditionType="OUT" Memo="未完成任务！" TargetMap="11219">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务未完成" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你的【荣誉之证】数量不足，别想蒙混过关！\n收集到足够的【荣誉之证】再来找我吧！" />													
+					<Option Info="立刻就去" NextStep="2"/>	 																											
+				</Action>						
+    		</Event>			
+		</Step>
+		
+		<Step ID="8" ParentList="2" ParentCost="1">
+			<Condition>
+				<Item ID="180049" Count="6" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="完成任务！" TargetMap="11219">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务完成！" />
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你确认要完成今天的挑战吗？\n如果你获得更多的荣誉之证，我会给予你更多的【经验值】！" />									
+					<Option Info="完成挑战！" />	
+					<Option Info="让我再想想" NextStep="2"/>										
+				</Action>						
+    		</Event>
+    		<Event ConditionType="OUT" Memo="未完成任务！" TargetMap="11219">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务未完成" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你的【荣誉之证】数量不足，别想蒙混过关！\n收集到足够的【荣誉之证】再来找我吧！" />													
+					<Option Info="立刻就去" NextStep="2"/>	 																											
+				</Action>						
+    		</Event>			
+		</Step>
+		
+		<Step ID="9" ParentList="2" ParentCost="1">
+			<Condition>
+				<Item ID="180049" Count="7" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="完成任务！" TargetMap="11219">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务完成！" />
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你确认要完成今天的挑战吗？\n如果你获得更多的荣誉之证，我会给予你更多的【经验值】！" />									
+					<Option Info="完成挑战！" />	
+					<Option Info="让我再想想" NextStep="2"/>										
+				</Action>						
+    		</Event>
+    		<Event ConditionType="OUT" Memo="未完成任务！" TargetMap="11219">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务未完成" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你的【荣誉之证】数量不足，别想蒙混过关！\n收集到足够的【荣誉之证】再来找我吧！" />													
+					<Option Info="立刻就去" NextStep="2"/>	 																											
+				</Action>						
+    		</Event>			
+		</Step>
+		
+		<Step ID="10" ParentList="2" ParentCost="1">
+			<Condition>
+				<Item ID="180049" Count="8" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="完成任务！" TargetMap="11219">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务完成！" />
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你确认要完成今天的挑战吗？\n如果你获得更多的荣誉之证，我会给予你更多的【经验值】！" />									
+					<Option Info="完成挑战！" />	
+					<Option Info="让我再想想" NextStep="2"/>										
+				</Action>						
+    		</Event>
+    		<Event ConditionType="OUT" Memo="未完成任务！" TargetMap="11219">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务未完成" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你的【荣誉之证】数量不足，别想蒙混过关！\n收集到足够的【荣誉之证】再来找我吧！" />													
+					<Option Info="立刻就去" NextStep="2"/>	 																											
+				</Action>						
+    		</Event>			
+		</Step>
+		
+		<Step ID="11" ParentList="2" ParentCost="1">
+			<Condition>
+				<Item ID="180049" Count="9" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="完成任务！" TargetMap="11219">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务完成！" />
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你确认要完成今天的挑战吗？\n如果你获得更多的荣誉之证，我会给予你更多的【经验值】！" />									
+					<Option Info="完成挑战！" />	
+					<Option Info="让我再想想" NextStep="2"/>										
+				</Action>						
+    		</Event>
+    		<Event ConditionType="OUT" Memo="未完成任务！" TargetMap="11219">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务未完成" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你的【荣誉之证】数量不足，别想蒙混过关！\n收集到足够的【荣誉之证】再来找我吧！" />													
+					<Option Info="立刻就去" NextStep="2"/>	 																											
+				</Action>						
+    		</Event>			
+		</Step>
+		
+		<Step ID="12" ParentList="2" ParentCost="1">
+			<Condition>
+				<Item ID="180049" Count="10" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="完成任务！" TargetMap="11219">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务完成！" />
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="1,2,3,4....10！很厉害嘛！居然收集了10个【荣誉之证】！这些【星豆】和【经验】是你的了，期待你明天的表现！" />									
+					<Option Info="完成挑战！" />									
+				</Action>						
+    		</Event>
+    		<Event ConditionType="OUT" Memo="未完成任务！" TargetMap="11219">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="任务未完成" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="你的【荣誉之证】数量不足，别想蒙混过关！\n收集到足够的【荣誉之证】再来找我吧！" />													
+					<Option Info="立刻就去" NextStep="2"/>	 																											
+				</Action>						
+    		</Event>			
+		</Step>
+		
+		<Step ID="13" ParentList="2" ParentCost="1" TargetMap="11219">		
+    		<Event Memo="" TargetMap="11219">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11219" ObjID="38" TaskOption="什么事" />
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="38" ImageID="1" Info="击败【修炼之域15域】、【修炼之域20域】、【修炼之域25域】和【修炼之域30域】的【守关士兵】会获得【荣誉之证】，不过每天只能获得一次。" />								
+					<Option Info="我明白了！"  NextStep="2"/>										
+				</Action>						
+    		</Event>			
+		</Step>
+	</Procedure>
+</Task>

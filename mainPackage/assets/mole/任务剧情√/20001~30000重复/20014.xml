@@ -1,0 +1,266 @@
+<Task ID="20014" Memo="c路伊c老师在找小主人，\n不去c麦田村广场c看看吗？" TargetMap="11401">
+	<Procedure> 
+  		<Step ID="1" ParentList="0" ParentCost="0" >
+    		<Event Memo="c路伊c老师在找小主人，\n不去c麦田村广场c看看吗？" TargetMap="11401">
+  				<Trigger>						
+					<Item Type="NPC_OPTION" MapID="11401" ObjID="32" TaskOption="路伊路伊什么事？" />
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="32" ImageID="1" Info="hi~未来勇士【@nick】，\n【巨石蟹的蟹角】是抢手材料你懂的~\n【尼康康餐厅】有人愿意高价收购。\n去【海底洞穴二层】拿些回来如何？" />		
+					<Option Info="使命必达！" SkipTrigger="Y" />									
+					<Option Info="【海底洞穴二层】在哪？" NextStep="2" SkipTrigger="Y" NotUpdateBuffer="Y"/>				
+					<Option Info="我很忙，下次再说" NextStep="1" />					
+				</Action>							
+    		</Event>
+		</Step>		
+  		<Step ID="2" ParentList="0" ParentCost="1" >
+    		<Event Memo="c巨石蟹c在麦田村c海底洞穴二层c，\n快去看看吧！" TargetMap="11401">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11401" ObjID="32" TaskOption="【海底洞穴二层】在哪？" />
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="32" ImageID="1" Info="【海底洞穴】就在麦田村←左↑上角。\n那里一共有【两层】，还有很多黑化精灵。\n【@nick】小心。" />									
+					<Option Info="使命必达！" SkipTrigger="Y" />										
+				</Action>						
+    		</Event>
+		</Step>			
+  		<Step ID="10" ParentList="1, 2" ParentCost="1" >
+    		<Event Memo="c巨石蟹c在麦田村c海底洞穴二层c，\n快去看看吧！" TargetMap="11401">
+  				<Trigger>						
+					<Item Type="NPC_OPTION" MapID="11401" ObjID="32" TaskOption="路伊路伊什么事？" />
+				</Trigger>
+    			<Action Type="COMMAND" Command="NOTHING" /> 						
+    		</Event>
+		</Step>		
+				
+<!-- 海底螃蟹↓ -->					
+  		<Step ID="11" ParentList="10" ParentCost="1" >		
+			<Condition>
+				<Item ID="260021" Count="1" />
+			</Condition>				
+    		<Event ConditionType="IN" Memo="得到c蟹角c↖(^ω^)↗\n交给c麦田村·尼康康餐厅c最需要的摩尔吧！" TargetMap="11401">
+  				<Trigger>									
+					<Item Type="NPC_OPTION" MapID="21402" ObjID="310" TaskOption="【蟹角】拿到啦！" />				
+				</Trigger>
+    			<Action Type="COMMAND" Command="NOTHING" SkipTrigger="Y" /> 										
+    		</Event>
+    		<Event ConditionType="OUT" Memo="c巨石蟹c在麦田村c海底洞穴二层c，\n快去看看吧！" TargetMap="21402">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="21402" ObjID="310" TaskOption="拜托给我【蟹角】" />					
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="310" ImageID="1" Info="“伸手党”神马最讨厌了，\n有实力就自己动手拿吧！" />													
+					<Option Info="来战！" />	
+					<Option Info="对不起不用了" NextStep="11" />																												
+				</Action>	
+                <Action Type="COMMAND" Command="BATTLE" Params="2006" />					
+    		</Event>			
+		</Step>					
+  		<Step ID="12" ParentList="11" ParentCost="1" >
+			<Condition>
+				<Item ID="260021" Count="1" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="得到c蟹角c↖(^ω^)↗\n交给c麦田村·尼康康餐厅c最需要的摩尔吧！" TargetMap="11401">
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="21402" ObjID="310" TaskOption="【蟹角】拿到啦！" />					
+				</Trigger>				
+				<Action Type="TALK">
+					<Msg NpcID="310" ImageID="1" Info="拿去吧拿去吧，不要贪心“珍稀食材”【蟹角】！\n咕咕瓦……\n（这是谋杀啊（T—T）……）" />									
+					<Option Info="谢谢你O(∩_∩)O！" />		
+					<Option Info="再来一战！" NextStep="20" SkipTrigger="Y" NotUpdateBuffer="Y" />														
+				</Action>						
+    		</Event>
+    		<Event ConditionType="OUT" Memo="c巨石蟹c在麦田村c海底洞穴二层c，\n快去看看吧！" TargetMap="21402">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="21402" ObjID="310" TaskOption="拜托给我【蟹角】" />						
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="310" ImageID="1" Info="“伸手党”神马最讨厌了，\n有实力就自己动手拿吧！" />													
+					<Option Info="来战！" />	
+					<Option Info="对不起不用了" NextStep="12" />																												
+				</Action>	
+                <Action Type="COMMAND" Command="BATTLE" Params="2006" />					
+    		</Event>				
+		</Step>		
+  		<Step ID="20" ParentList="0" ParentCost="1" >			
+    		<Event Memo="得到c蟹角c↖(^ω^)↗\n交给c麦田村·尼康康餐厅c最需要的摩尔吧！" TargetMap="11401">		
+  				<Trigger>									
+					<Item Type="NPC_OPTION" MapID="21402" ObjID="310" TaskOption="【蟹角】拿到啦！" />		
+				</Trigger>					
+                <Action Type="COMMAND" Command="BATTLE" Params="2006" NextStep="12" />					
+    		</Event>				
+		</Step>			
+					
+<!-- 净化之路螃蟹↓ -->	
+  		<Step ID="21" ParentList="10" ParentCost="1" >		
+			<Condition>
+				<Item ID="260021" Count="1" />
+			</Condition>				
+    		<Event ConditionType="IN" Memo="得到c蟹角c↖(^ω^)↗\n交给c麦田村·尼康康餐厅c最需要的摩尔吧！" TargetMap="11401">
+  				<Trigger>														
+					<Item Type="OBJ_CLICK" MapID="30203" ObjID="5120" />		
+				</Trigger>
+    			<Action Type="COMMAND" Command="NOTHING" SkipTrigger="Y" /> 										
+    		</Event>
+    		<Event ConditionType="OUT" Memo="c巨石蟹c在麦田村c海底洞穴二层c，\n快去看看吧！" TargetMap="21402">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="30203" ObjID="5120" />				
+				</Trigger> 					
+    			<Action Type="COMMAND" Command="NOTHING" SkipTrigger="Y" /> 													
+    		</Event>			
+		</Step>					
+  		<Step ID="22" ParentList="21" ParentCost="1" >
+			<Condition>
+				<Item ID="260021" Count="1" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="得到c蟹角c↖(^ω^)↗\n交给c麦田村·尼康康餐厅c最需要的摩尔吧！" TargetMap="11401">
+  				<Trigger>					
+					<Item Type="OBJ_CLICK" MapID="30203" ObjID="5120" />					
+				</Trigger>				
+    			<Action Type="COMMAND" Command="NOTHING" SkipTrigger="Y" /> 															
+    		</Event>
+    		<Event ConditionType="OUT" Memo="c巨石蟹c在麦田村c海底洞穴二层c，\n快去看看吧！" TargetMap="21402">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="30203" ObjID="5120" />						
+				</Trigger> 					
+    			<Action Type="COMMAND" Command="NOTHING" SkipTrigger="Y" /> 														
+    		</Event>				
+		</Step>		
+  		<Step ID="30" ParentList="0" ParentCost="1" >			
+    		<Event Memo="得到c蟹角c↖(^ω^)↗\n交给c麦田村·尼康康餐厅c最需要的摩尔吧！" TargetMap="11401">		
+  				<Trigger>									
+					<Item Type="OBJ_CLICK" MapID="30203" ObjID="5120" />	
+				</Trigger>					
+    			<Action Type="COMMAND" Command="NOTHING" SkipTrigger="Y" /> 														
+    		</Event>				
+		</Step>  		
+	
+ <!--路伊↓-->	
+
+  		<Step ID="8" ParentList="10, 12" ParentCost="1" >
+			<Condition>
+				<Item ID="260021" Count="1" />
+			</Condition>				
+    		<Event ConditionType="IN" Memo="得到c蟹角c↖(^ω^)↗\n交给c麦田村·尼康康餐厅c最需要的摩尔吧！" TargetMap="11401">
+  				<Trigger>						
+					<Item Type="NPC_OPTION" MapID="11401" ObjID="32" TaskOption="【蟹角】来了！" />
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="32" ImageID="1" Info="Nonono，我只是帮大家传口信。\n把【蟹角】交给【尼康康餐厅】里最需要的人吧。" />		
+					<Option Info="使命必达！" NextStep="8" />														
+				</Action>							
+    		</Event>
+    		<Event ConditionType="OUT" Memo="c巨石蟹c在麦田村c海底洞穴二层c，快去看看吧！" TargetMap="21402">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11401" ObjID="32" TaskOption="【巨石蟹】在哪里？" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="32" ImageID="1" Info="【巨石蟹】就在【海底洞穴二层】。\n从麦田村往←左↑上角走。\n巨石蟹很厉害，【@nick】小心。" />													
+					<Option Info="现在就去！" />																							
+				</Action>	
+    		</Event>				
+		</Step>	
+		
+ <!--卡密尔↓-->	
+  		<Step ID="4" ParentList="10, 12" ParentCost="1" >	
+			<Condition>
+				<Item ID="260021" Count="1" />
+			</Condition>				
+    		<Event ConditionType="IN" Memo="得到c蟹角c↖(^ω^)↗\n交给c麦田村·尼康康餐厅c最需要的摩尔吧！" TargetMap="11404">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11404" ObjID="34" TaskOption="【蟹角】来了！" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="34" ImageID="2" Info="多修哥哥最喜欢吃蟹料理了。\n谢谢【@nick】^_^!" />													
+					<Option Info="O(∩_∩)O！" />																							
+				</Action>	
+    		</Event>	
+    		<Event ConditionType="OUT" Memo="c巨石蟹c在麦田村c海底洞穴二层c，快去看看吧！" TargetMap="21402">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11404" ObjID="34" TaskOption="【巨石蟹】在哪里？" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="34" ImageID="1" Info="【巨石蟹】就在【海底洞穴二层】。\n从麦田村往←左↑上角走。\n巨石蟹很厉害，【@nick】小心。" />													
+					<Option Info="现在就去！" />																							
+				</Action>	
+    		</Event>			
+		</Step>			
+  	
+ <!--麦婶↓-->			
+  		<Step ID="5" ParentList="10, 12" ParentCost="1" >
+			<Condition>
+				<Item ID="260021" Count="1" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="得到c蟹角c↖(^ω^)↗\n交给c麦田村·尼康康餐厅c最需要的摩尔吧！" TargetMap="11404">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11404" ObjID="35" TaskOption="【蟹角】来了！" />
+				</Trigger>					
+				<Action Type="TALK">
+					<Msg NpcID="35" ImageID="1" Info="这下可以做香喷喷的海鲜调味料啦，\n【@nick】要来尝尝啊！" />													
+					<Option Info="O(∩_∩)O！" />																							
+				</Action>	
+    		</Event>
+    		<Event ConditionType="OUT" Memo="c巨石蟹c在麦田村c海底洞穴二层c，快去看看吧！" TargetMap="21402">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11404" ObjID="35" TaskOption="【巨石蟹】在哪里？" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="35" ImageID="1" Info="【巨石蟹】就在【海底洞穴二层】。\n从麦田村往←左↑上角走。\n巨石蟹很厉害，【@nick】小心。" />													
+					<Option Info="现在就去！" />																							
+				</Action>	
+    		</Event>			
+		</Step>					
+  		
+ <!--纳司↓-->				
+  		<Step ID="6" ParentList="10, 12" ParentCost="1" >
+			<Condition>
+				<Item ID="260021" Count="1" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="得到c蟹角c↖(^ω^)↗\n交给c麦田村·尼康康餐厅c最需要的摩尔吧！" TargetMap="11404">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11404" ObjID="43" TaskOption="【蟹角】来了！" />
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="43" ImageID="3" Info="还差一点就能破译巨石蟹的遗传密码了……" />							
+					<Option Info="O(∩_∩)O！" />																							
+				</Action>	
+    		</Event>
+    		<Event ConditionType="OUT" Memo="c巨石蟹c在麦田村c海底洞穴二层c，快去看看吧！" TargetMap="21402">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11404" ObjID="43" TaskOption="【巨石蟹】在哪里？" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="43" ImageID="1" Info="【巨石蟹】就在【海底洞穴二层】。\n从麦田村往←左↑上角走。\n巨石蟹很厉害，【@nick】小心。" />													
+					<Option Info="现在就去！" />																							
+				</Action>	
+    		</Event>			
+		</Step>				
+		
+ 
+ <!--扎克司↓-->				
+  		<Step ID="7" ParentList="10, 12" ParentCost="1" >
+			<Condition>
+				<Item ID="260021" Count="1" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="得到c蟹角c↖(^ω^)↗\n交给c麦田村·尼康康餐厅c最需要的摩尔吧！" TargetMap="11404">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11404" ObjID="42" TaskOption="【蟹角】来了！" />
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="42" ImageID="1" Info="这就是格历尔大陆的究极美味，\n多么神奇的存在啊~~\n感谢你为精灵研究事业做出的贡献。" />							
+					<Option Info="O(∩_∩)O！" />																							
+				</Action>	
+    		</Event>
+    		<Event ConditionType="OUT" Memo="c巨石蟹c在麦田村c海底洞穴二层c，快去看看吧！" TargetMap="21402">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11404" ObjID="42" TaskOption="【巨石蟹】在哪里？" />
+				</Trigger> 					
+				<Action Type="TALK">
+					<Msg NpcID="42" ImageID="1" Info="【巨石蟹】就在【海底洞穴二层】。\n从麦田村往←左↑上角走。\n巨石蟹很厉害，【@nick】小心。" />													
+					<Option Info="现在就去！" />																							
+				</Action>	
+    		</Event>			
+		</Step>				
+		
+	</Procedure>
+</Task>

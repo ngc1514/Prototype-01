@@ -1,0 +1,37 @@
+<Task ID="30003" Memo="哒哒鸟" TargetMap="11202">
+   	<Procedure> 
+		<Step ID="1" ParentList="0" ParentCost="0" >
+    		<Event Memo="皮克司精灵研究所在c公告栏c发出了悬赏，快去看看悬赏内容。" TargetMap=" ">
+  				<Trigger>
+					<Item Type="GDOC_ACCEPT" />
+				</Trigger>
+    			<Action Type="COMMAND" Command="NOTHING" SkipTrigger="Y" />
+    		</Event>
+		</Step>   	
+		<Step ID="2" ParentList="1" ParentCost="1" >
+    		<Event Memo=" " TargetMap=" ">
+  				<Trigger>
+					<Item Type="ENTER_MAP" MapID="11206" />						
+ 					<Item Type="OBJ_CLICK" MapID="11206" ObjID="12" /> 									
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="12" ImageID="1" Info="你知道“多精灵合体”吗？\n精灵世界有一种“多精灵合体”的精灵成长现象。\n【哒哒鸟】就是这样的神奇精灵！" />
+					<Msg NpcID="12" ImageID="5" Info="【勇士广场】上的【哒哒鸟】发出了“合体信号”！\n快去调查吧！！" />				
+					<Option Info="这就去勇士广场看看！" />
+				</Action>
+    		</Event>
+		</Step>   
+		<Step ID="3" ParentList="2" ParentCost="1" >
+    		<Event Memo=" " TargetMap=" ">
+  				<Trigger>
+					<Item Type="ENTER_MAP" MapID="11202" />														
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="12" ImageID="5" Info="【瑞恩纪念像】上的【哒哒鸟】发出了“合体信号”！\n新的“精灵组”即将诞生！\n快去找到那只【哒哒鸟】吧！！" />				
+					<Option Info="这就去勇士广场看看！" />
+				</Action>
+    		</Event>
+		</Step> 		  		
+	</Procedure>
+</Task>
+

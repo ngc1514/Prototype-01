@@ -1,0 +1,449 @@
+<Task ID="25" Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+   	<Procedure> 
+ 
+ 
+ 
+  		<Step ID="1" ParentList="0" ParentCost="0" >
+    		<Event Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307" >
+  				<Trigger>
+					<Item Type="ENTER_MAP" MapID="11307" />						
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="25" TaskOption="摩尔王召集？" />									
+				</Trigger>
+    			<Action Type="COMMAND" Command="ROLL_CAMERA" Params="400, 200" />	
+    			<Action Type="COMMAND" Command="DELAY" Params="2000" /> 				
+				<Action Type="TALK">
+					<Msg NpcID="25" ImageID="6" Info="摩尔王……我们需要召唤【20级】的【见习职业】执行这次的B级任务……" />
+					<Msg NpcID="24" ImageID="1" Info="宾德大人——\n未来勇士【@nick】来了……" />								
+					<Option Info="我来也" />
+				</Action>
+    			<Action Type="COMMAND" Command="RESTORE_CAMERA" />			
+				<Action Type="TALK">							
+					<Msg NpcID="25" ImageID="9" Info="【@nick】来有什么用，\n它还不是见习勇士，\n没获得见习称号等级也不够高……" />	
+					<Msg NpcID="25" ImageID="1" Info="……( ⊙“⊙ )吼？\n【@nick】什么时候已经20级了，踩在脚下没注意。" />
+					<Msg NpcID="25" ImageID="9" Info="不过你应该还没有【见习】称号。\n有的话戴出来一看便知。" />
+					<Option Info="戴上【称号】给你看！" />
+				</Action>						
+    		</Event>
+		</Step>
+  		<Step ID="100" ParentList="1" ParentCost="1" >
+			<Condition>
+				<Person Title="2" />
+			</Condition>
+    		<Event ConditionType="IN" Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="25" TaskOption="我有【见习剑士】称号" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="25" ImageID="6" Info="……( ⊙“⊙ )吼？\n什么时候已经获得【见习称号】了……" />
+					<Msg NpcID="25" ImageID="1" Info="好吧，准备好了接受这次的任务了吗？" />
+					<Option Info="接受B级任务" SkipTrigger="Y" />
+					<Option Info="有点事先走了" NextStep="100"  />
+				</Action>
+    		</Event>
+    		<Event ConditionType="OUT" Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="25" TaskOption="我有【见习剑士】称号" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="25" ImageID="6" Info="你有【见习称号】就戴出来看看。\n【见习剑士】【见习弓箭手】【见习魔法师】【见习传教士】……。" />
+					<Msg NpcID="24" ImageID="1" Info="你的称号都在【个人信息】\n【荣誉称号】↔【职业称号】里，\n选择符合的称号佩戴吧^^。" />	
+					<Option Info="这就戴上【见习称号】！" />
+				</Action>
+    		</Event>			
+		</Step>
+
+  		<Step ID="101" ParentList="1" ParentCost="1" >
+			<Condition>
+				<Person Title="8" />
+			</Condition>
+    		<Event ConditionType="IN" Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="25" TaskOption="我有【见习弓箭手】称号" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="25" ImageID="6" Info="……( ⊙“⊙ )吼？\n什么时候已经获得【见习称号】了……" />
+					<Msg NpcID="25" ImageID="1" Info="好……，准备好接受这次任务了吗？" />
+					<Option Info="接受B级任务" SkipTrigger="Y" />
+					<Option Info="有点事先走了" NextStep="101"  />
+				</Action>
+    		</Event>
+    		<Event ConditionType="OUT" Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="25" TaskOption="我有【见习弓箭手】称号" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="25" ImageID="6" Info="你有【见习称号】就戴出来看看。\n【见习剑士】【见习弓箭手】【见习魔法师】【见习传教士】……。" />
+					<Msg NpcID="24" ImageID="1" Info="你的称号都在【个人信息】\n【荣誉称号】↔【职业称号】里，\n选择符合的称号佩戴吧^^。" />
+					<Option Info="这就带上【见习称号】！" />
+				</Action>
+    		</Event>			
+		</Step>
+
+  		<Step ID="102" ParentList="1" ParentCost="1" >
+			<Condition>
+				<Person Title="14" />
+			</Condition>
+    		<Event ConditionType="IN" Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="25" TaskOption="我有【见习魔法师】称号" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="25" ImageID="6" Info="……( ⊙“⊙ )吼？\n什么时候已经获得【见习称号】了……" />
+					<Msg NpcID="25" ImageID="1" Info="好吧，准备好了接受这次的任务了吗？" />
+					<Option Info="接受B级任务" SkipTrigger="Y" />
+					<Option Info="有点事先走了" NextStep="102"  />
+				</Action>
+    		</Event>
+    		<Event ConditionType="OUT" Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="25" TaskOption="我有【见习魔法师】称号" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="25" ImageID="6" Info="你有【见习称号】就戴出来看看。\n【见习剑士】【见习弓箭手】【见习魔法师】【见习传教士】……。" />
+					<Msg NpcID="24" ImageID="1" Info="你的称号都在【个人信息】\n【荣誉称号】↔【职业称号】里，\n选择符合的称号佩戴吧^^。" />
+					<Option Info="这就带上【见习称号】！" />
+				</Action>
+    		</Event>			
+		</Step>
+		
+  		<Step ID="103" ParentList="1" ParentCost="1" >
+			<Condition>
+				<Person Title="20" />
+			</Condition>
+    		<Event ConditionType="IN" Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="25" TaskOption="我有【见习传教士】称号" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="25" ImageID="6" Info="……( ⊙“⊙ )吼？\n什么时候已经获得【见习称号】了……" />
+					<Msg NpcID="25" ImageID="1" Info="好吧，准备好了接受这次的任务了吗？" />
+					<Option Info="接受B级任务" SkipTrigger="Y" />
+					<Option Info="有点事先走了" NextStep="103"  />
+				</Action>
+    		</Event>
+    		<Event ConditionType="OUT" Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="25" TaskOption="我有【见习传教士】称号" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="25" ImageID="6" Info="你有【见习称号】就戴出来看看。\n【见习剑士】【见习弓箭手】【见习魔法师】【见习传教士】……。" />
+					<Msg NpcID="24" ImageID="1" Info="你的称号都在【个人信息】\n【荣誉称号】↔【职业称号】里，\n选择符合的称号佩戴吧^^。" />
+					<Option Info="这就带上【见习称号】！" />
+				</Action>
+    		</Event>			
+		</Step>
+				
+  		<Step ID="2" ParentList="100, 101, 102, 103" ParentCost="1" >
+    		<Event Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="24" TaskOption="关于这次的B级任务" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="24" ImageID="2" Info="勇士协会派出“联络员”会在【弗雷基港】协助你。还记得“勇士协会暗号”吗？" />
+					<Option Info="【勇敢你就输了】" NotUpdateBuffer="Y" SkipTrigger="Y" />
+					<Option Info="【退缩你就赢了】" NotUpdateBuffer="Y" SkipTrigger="Y" />
+					<Option Info="【勇敢你就赢了】" NotUpdateBuffer="Y" SkipTrigger="Y" />
+					<Option Info="【退缩你就输了】" NextStep="3" SkipTrigger="Y" NotUpdateBuffer="Y" />
+					<Option Info="【退步你就输了】" NotUpdateBuffer="Y" SkipTrigger="Y" />	
+				</Action>											
+    		</Event>
+		</Step>
+		
+  		<Step ID="3" ParentList="0" ParentCost="1" >
+    		<Event Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="24" TaskOption="关于这次的B级任务" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="24" ImageID="1" Info="令人惊叹的记忆力……" />
+					<Msg NpcID="24" ImageID="2" Info="赶快乘陆行鸟去【弗雷基港】，\n联络员在那里等你。" />		
+					<Msg NpcID="30" ImageID="1" Info="20级的“见习勇士”。\n祝愿你早日完成使命。" />								
+					<Option Info="使命必达！" />
+				</Action>		
+				<Action Type="COMMAND" Command="ADD_MAP_OBJ_1" Params="11603, 16003" />													
+    		</Event>
+		</Step>		
+		
+  		<Step ID="4" ParentList="2" ParentCost="1" >
+    		<Event Memo="20级c见习勇士c\nc摩尔王c紧急召集！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="24" TaskOption="关于这次的B级任务" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="25" ImageID="6" Info="喂喂——应该是【退缩你就输了】——！" />
+					<Msg NpcID="24" ImageID="2" Info="正是如此，勇士协会暗号【退缩你就输了】——请牢记在心。赶快乘陆行鸟去【弗雷基港】，正义的伙伴在那里等你。" />
+					<Msg NpcID="30" ImageID="1" Info="20级的“见习勇士”。祝愿你早日完成使命。" />
+					<Option Info="使命必达！" />
+				</Action>											
+				<Action Type="COMMAND" Command="ADD_MAP_OBJ_1" Params="11603, 16003" />					
+    		</Event>
+		</Step>	
+		
+		
+
+
+<!--正义伙伴↓-->
+  		<Step ID="5" ParentList="3, 4" ParentCost="1" >
+    		<Event Memo="c联络员c在c弗雷基港c等待援助！快去南街乘陆行鸟吧！小主人我们又可以去海港镇看海了\(^o^)/" TargetMap="11603">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11603" ObjID="16003" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="15" ImageID="1" Info="【我该怎么办——？】"  />		
+					<Option Info="【勇敢你就输了】" NotUpdateBuffer="Y" SkipTrigger="Y" />
+					<Option Info="【退缩你就赢了】" NotUpdateBuffer="Y" SkipTrigger="Y" />
+					<Option Info="【勇敢你就赢了】" NotUpdateBuffer="Y" SkipTrigger="Y" />
+					<Option Info="【退缩你就输了】" NextStep="7" SkipTrigger="Y" NotUpdateBuffer="Y" />
+					<Option Info="【退步你就输了】" NotUpdateBuffer="Y" SkipTrigger="Y" />																				
+				</Action>
+    		</Event>
+		</Step>
+  		<Step ID="6" ParentList="5" ParentCost="1" >
+    		<Event Memo="c联络员c在c弗雷基港c等待援助！快去南街乘陆行鸟吧！小主人我们又可以去海港镇看海了\(^o^)/" TargetMap="11603">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11603" ObjID="16003" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="15" ImageID="1" Info="……。"  />		
+					<Option Info="咦？暗号错了⊙⊙？"  NextStep="5"  />																				
+				</Action>
+    		</Event>
+		</Step>	
+  		<Step ID="7" ParentList="0" ParentCost="1" >
+    		<Event Memo="“联络员”在c弗雷基港c等待援助！快去南街乘陆行鸟吧！小主人我们又可以去弗雷基港看海了\(^o^)/" TargetMap="11603">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11603" ObjID="16003" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="15" ImageID="1" Info="对暗号要越来越有默契~ (^_,^+）b" />
+					<Msg NpcID="15" ImageID="1" Info="【弗雷基港】的出海船只全体停航。\n目前原因不明。\n你看我在问可爱的小艾比叔叔。" />
+					<Msg NpcID="46" ImageID="2" Info="最近好像天气不错……，\n陆行鸟们说它们的“砂囊”感受不到风的流动啊……" />	
+					<Msg NpcID="15" ImageID="1" Info="一起向当地摩尔询问调查吧。\n我有预感……这次要来真的了……" />	
+					<Option Info="嗯" />
+				</Action>											
+    		</Event>
+		</Step>	
+
+  		<Step ID="8" ParentList="7" ParentCost="1" >
+    		<Event Memo="c弗雷基港c海船全体停航原因不明。\n和正义的伙伴一起在弗雷基港向摩尔咨询调查吧！" TargetMap="11603">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11603" ObjID="16003" />				
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="15" ImageID="1" Info="【弗雷基镇】的出海船只全体停航。目前原因不明。\n一起在全镇进行调查吧。\n我有预感……这次要来真的了……" />
+					<Msg NpcID="15" ImageID="1" Info="你看我在问可爱的小艾比叔叔。" />
+					<Msg NpcID="46" ImageID="2" Info="最近好像天气不错……，\n陆行鸟们说它们的“砂囊”感受不到风的流动啊……" />					
+					<Msg NpcID="15" ImageID="2" Info="你也去问问其他居民吧~，\n我们比谁先找到事件，\n分头行动，OK？" />
+					<Option Info="OK分头行动!" NextStep="8" />
+				</Action>											
+    		</Event>
+		</Step>	
+		
+<!--安德鲁↓-->
+  		<Step ID="9" ParentList="7" ParentCost="1" >
+    		<Event Memo="c弗雷基港c海船全体停航原因不明。\n和正义的伙伴一起在弗雷基港向摩尔咨询调查吧！" TargetMap="11603">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11603" ObjID="105" TaskOption="关于海船情况" />			
+				</Trigger>
+				<Action Type="TALK">				
+					<Msg NpcID="105" ImageID="1" Info="海船停航，制造高级装备的宝石都运输中断了。船的事情去问旁边【弗雷基商会】的【TA】。" />
+					<Msg NpcID="105" ImageID="1" Info="【弗雷基港码头】的船和码头都是强大的【T家族】的。" />
+					<Option Info="知道了谢谢安德鲁" NextStep="9" />
+				</Action>											
+    		</Event>
+		</Step>			
+<!--谢娜↓-->
+  		<Step ID="10" ParentList="7" ParentCost="1" >
+    		<Event Memo="c弗雷基港c海船全体停航原因不明。\n和正义的伙伴一起在弗雷基港向摩尔咨询调查吧！" TargetMap="11603">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11603" ObjID="51" TaskOption="关于海船情况" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="51" ImageID="1" Info="Hi^^!你也喜欢看海么？\n什么？你问我最近海边的情况，最近都没有出航的船，听不到起航的号角……" />
+					<Msg NpcID="51" ImageID="1" Info="往→→→边的【弗雷基商会】里的【TA】船长应该最知道商船的情况。\nPS:它的胡子你不觉得很搞笑么?\n(*^__^*) 嘻嘻……。" />
+					<Option Info="（去问问【TA】吧…）" NextStep="10" />
+				</Action>
+   				<Action Type="COMMAND" Command="REMOVE_MAP_OBJ" Params="11603, 16003" />				
+				<Action Type="COMMAND" Command="ADD_MAP_OBJ_1" Params="11602, 16004" />															
+    		</Event>
+		</Step>		
+		
+		
+		
+		
+<!--TA↓-->
+
+
+  		<Step ID="11" ParentList="7" ParentCost="1" >
+    		<Event Memo="c弗雷基港c海船全体停航原因不明。\n和正义的伙伴一起在弗雷基港向摩尔咨询调查吧！" TargetMap="11603">
+  				<Trigger>
+					<Item Type="ENTER_MAP" MapID="11602" />
+					<Item Type="NPC_OPTION" MapID="11602" ObjID="48" TaskOption="关于海船情况" />			
+				</Trigger>
+   				<Action Type="COMMAND" Command="REMOVE_MAP_OBJ" Params="11603, 16003" />				
+				<Action Type="COMMAND" Command="ADD_MAP_OBJ_1" Params="11602, 16004" />					
+				<Action Type="TALK">
+					<Msg NpcID="15" ImageID="1" Info="【@nick】这里，come on~！\n太慢了（=__,^~）" />
+					<Msg NpcID="48" ImageID="1" Info="是你啊，\n最近有没有骗小TB的零用钱？\n哈哈哈——开玩笑的。" />
+					<Msg NpcID="15" ImageID="2" Info="不愧是T家族掌舵老大。\n请告诉我们最近港口有何异常？——" />
+					<Msg NpcID="48" ImageID="1" Info="是风……，我们失去了风。\n弗雷基港的船，一直都借助格历尔大陆由北向南的大风起航。" />					
+					<Msg NpcID="48" ImageID="1" Info="最近风突然停止了。\n我们的商船都没法起航了。" />
+					<Msg NpcID="48" ImageID="1" Info="海面上的船员也被困在海中无法回港。\n囧啊哈哈~。\n听说需要大量法师发动6级以上风魔法救援。" />
+					<Msg NpcID="15" ImageID="2" Info="慢着……！我有预感，与【码头】和【船只】【有关的地点】会有线索……\nGOGOGO！MOVE!行动起来！\n这次我们比谁先找到案发地点——闪^" />					
+					<Option Info="（=”=）！" />
+				</Action>				
+   				<Action Type="COMMAND" Command="REMOVE_MAP_OBJ" Params="11602, 16004" />
+				<Action Type="COMMAND" Command="ADD_MAP_OBJ_1" Params="11605, 16005" />																	
+    		</Event>
+		</Step>	
+	
+  		<Step ID="105" ParentList="11, 8, 9, 10" ParentCost="1" SkipList="8, 9, 10" >
+    		<Event Memo="c弗雷基港c海船全体停航原因不明。\n和正义的伙伴一起在弗雷基港向摩尔咨询调查吧！" TargetMap="11603">
+    			<Action Type="COMMAND" Command="NOTHING" />													
+    		</Event>
+		</Step>	
+	
+		
+<!--鼬西船厂↓-->			
+
+  		<Step ID="12" ParentList="11" ParentCost="1" >
+    		<Event Memo="c码头c和c船只有关的地点c会有线索……？去港口继续搜查吧！" TargetMap="11604">
+  				<Trigger>
+					<Item Type="ENTER_MAP" MapID="11604" />			
+				</Trigger>
+				<Action Type="COMMAND" Command="ROLL_CAMERA" Params="400, 150" />	
+    			<Action Type="COMMAND" Command="DELAY" Params="1" /> 							
+    			<Action Type="COMMAND" Command="ROLL_CAMERA" Params="0, 150" />
+    			<Action Type="COMMAND" Command="DELAY" Params="1" />				
+    			<Action Type="COMMAND" Command="RESTORE_CAMERA" />														
+    		</Event>
+		</Step>
+
+  		<Step ID="13" ParentList="11" ParentCost="1" >
+    		<Event Memo="c码头c和c船只有关的地点c会有线索……？去港口继续搜查吧！" TargetMap="11605">
+  				<Trigger>
+					<Item Type="ENTER_MAP" MapID="11602" />		
+				</Trigger>
+				<Action Type="COMMAND" Command="ROLL_CAMERA" Params="400, 150" />	
+    			<Action Type="COMMAND" Command="DELAY" Params="1" /> 							
+    			<Action Type="COMMAND" Command="ROLL_CAMERA" Params="0, 150" />
+    			<Action Type="COMMAND" Command="DELAY" Params="1" />				
+    			<Action Type="COMMAND" Command="RESTORE_CAMERA" />														
+    		</Event>
+		</Step>		
+  		<Step ID="14" ParentList="11" ParentCost="1" >
+    		<Event Memo="c码头c和c船只有关的地点c会有线索……？去港口继续搜查吧！" TargetMap="11605">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11605" ObjID="16005" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="998" ImageID="7" Info="哇——+—————————+———！" />
+					<Msg NpcID="998" ImageID="7" Info="怎么又是你！你想吓死狐狸啊咩！" />
+					<Msg NpcID="998" ImageID="5" Info="——自从上次海底洞里被你打飞……我冒死从时间缝隙里契约了1级的高成长【撒旦蝙】【巨石怪】。" />
+					<Msg NpcID="998" ImageID="1" Info="我已经把它们都练到了 2 0 级！\n小耗子你——\n——使（死） 定  乐（了）——！" />
+					<Option Info="我也升级了谁怕谁" SkipTrigger="Y" />	
+					<Option Info="数到3我准备一下" />										
+				</Action>																	
+    		</Event>
+		</Step>
+
+
+  		<Step ID="15" ParentList="14" ParentCost="1" >
+			<Condition>
+				<Battle ID="3007" Count="1" />				
+			</Condition>
+			<Event ConditionType="IN" Memo="升级后的c鼬西c也被打败了！让它说出所有“阴谋阳谋”嗯嗯……" TargetMap="11605">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11605" ObjID="16005" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="998" ImageID="1" Info="……………\n……………………\n…………………………" />
+					<Msg NpcID="998" ImageID="6" Info="为……为什么……难道这就是狐狸型精灵的命运……妈——妈T T~~~！\n（哭的很伤心的样子）" />
+					<Msg NpcID="998" ImageID="6" Info="每次我要成功的时候，就会出现什么什么勇士……我讨厌你们！讨厌讨厌讨厌~~！\n\n(加布老大T T 我又失败了——……)" />
+					<Option Info="“加布老大”？" SkipTrigger="Y" />											
+				</Action>										
+    		</Event>
+    		<Event ConditionType="OUT" Memo="cT商会造船厂c发现宿敌c鼬西c，真正的“背水一战”开始！" TargetMap="11605">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11605" ObjID="16005" />		
+				</Trigger>
+                <Action Type="COMMAND" Command="BATTLE" Params="3007" />												
+    		</Event>			
+		</Step>
+
+
+  		<Step ID="16" ParentList="15" ParentCost="1" >
+			<Event Memo="升级后的c鼬西c也被打败了！让它说出所有“阴谋阳谋”嗯嗯……" TargetMap="11605">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11605" ObjID="16005" />			
+				</Trigger>
+     			<Action Type="MOVIE" Url="task_25_1.swf" MapLevel="TASK" Pos="0,0" />					
+				<Action Type="TALK">
+					<Msg NpcID="998" ImageID="6" Info="事情就是这样，\n只要我阻碍《勇士协会》摩尔与龙的试炼，\n老大一定会高兴的……" />
+					<Msg NpcID="998" ImageID="6" Info="如果不能帮助加布老大完成愿望，\n加布老大一定会不喜欢我不要我……" />
+					<Option Info="哇你们怎么来了——" />											
+				</Action>
+				<Action Type="COMMAND" Command="ADD_MAP_OBJ_2" Params="11605, 16006" />	
+				<Action Type="COMMAND" Command="ADD_MAP_OBJ_3" Params="11605, 16007" SkipTrigger="Y" />																					
+    		</Event>			
+		</Step>
+
+  		<Step ID="17" ParentList="16" ParentCost="1" >
+    		<Event Memo="安德鲁正义的伙伴戈戈拉迪迪拉……大家都赶来cT商会造船厂c了。" TargetMap="11605">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11605" ObjID="16005" />			
+				</Trigger>
+				<Action Type="TALK">
+					<Msg NpcID="15" ImageID="1" Info="啊哟~这次被你抢先了——" />
+					<Msg NpcID="105" ImageID="1" Info="我们听到了交战声和魔法光效赶来的。" />
+					<Msg NpcID="15" ImageID="1" Info="\n……大叔你穿的勇士圣衣，【十二勇士】的身份暴露了……" />
+					<Msg NpcID="314" ImageID="1" Info="【@nick】老大我来帮忙啦！" />
+					<Msg NpcID="315" ImageID="1" Info="大哥的大哥就叫大哥大！" />
+					<Msg NpcID="998" ImageID="7" Info="救……救命——逃不掉啦——！" />					
+					<Msg NpcID="2" ImageID="10" Info="\n（……【@nick】，现在是你做决定的时候……）\n你要帮助鼬西吗？…… " />
+					<Option Info="【放鼬西逃跑】" NextStep="60" SkipTrigger="Y" />
+					<Option Info="【抓住鼬西】"  SkipTrigger="Y" />					
+				</Action>																				
+    		</Event>
+		</Step>	
+  		<Step ID="60" ParentList="0" ParentCost="1" >
+    		<Event Memo="安德鲁正义的伙伴戈戈拉迪迪拉……大家都赶来cT商会造船厂c了。" TargetMap="11605">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11605" ObjID="16005" />	
+				</Trigger>
+				<Action Type="TALK">					
+					<Msg NpcID="2" ImageID="10" Info="\n    ……尊重你的选择…… " />
+					<Option Info="大家看！弗雷基！" />					
+				</Action>
+				<Action Type="TALK">	
+					<Msg NpcID="998" ImageID="7" Info="谢了鼹鼠！——我会记得你的——！" />									
+					<Msg NpcID="314" ImageID="1" Info="哪里有弗雷基？？" />
+					<Msg NpcID="315" ImageID="1" Info="啊，逃掉了……" />
+					<Option Info="要好好活下去啊！" />					
+				</Action>								
+   				<Action Type="COMMAND" Command="REMOVE_MAP_OBJ" Params="11605, 16006" />																				
+   				<Action Type="COMMAND" Command="REMOVE_MAP_OBJ" Params="11605, 16007"  />
+   				<Action Type="COMMAND" Command="REMOVE_MAP_OBJ" Params="11605, 16005" />				
+    		</Event>
+		</Step>	
+
+  		<Step ID="61" ParentList="17" ParentCost="1" >
+    		<Event Memo="安德鲁正义的伙伴戈戈拉迪迪拉……大家都赶来cT商会造船厂c了。" TargetMap="11605">
+  				<Trigger>
+					<Item Type="OBJ_CLICK" MapID="11605" ObjID="16005" />	
+				</Trigger>
+				<Action Type="TALK">					
+					<Msg NpcID="2" ImageID="10" Info="\n    ……尊重你的选择…… " />	
+					<Msg NpcID="15" ImageID="2" Info="跟我回勇士协会见摩尔王陛下吧^。" />					
+					<Msg NpcID="998" ImageID="6" Info="加……加布老大……来生再见了……" />									
+					<Option Info="……" />					
+				</Action>				
+   				<Action Type="COMMAND" Command="REMOVE_MAP_OBJ" Params="11605, 16006" />																				
+   				<Action Type="COMMAND" Command="REMOVE_MAP_OBJ" Params="11605, 16007"  />																				
+   				<Action Type="COMMAND" Command="REMOVE_MAP_OBJ" Params="11605, 16005" />
+    		</Event>
+		</Step>			
+
+	<!--提交节点4--> <!--stepidMAX=32-->
+</Procedure>
+</Task>

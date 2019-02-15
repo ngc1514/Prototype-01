@@ -1,0 +1,63 @@
+<Task ID="26" Memo="新的c勇士学员c，\nc摩尔王c在c国王呈见厅c接见！" TargetMap="11307">
+   	<Procedure> 
+  		<Step ID="1" ParentList="0" ParentCost="0" >
+    		<Event Memo="新的c勇士学员c，\nc摩尔王c在c国王呈见厅c接见！" TargetMap="11307" >
+  				<Trigger>
+					<Item Type="ENTER_MAP" MapID="11307" />						
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="30" TaskOption="摩尔王我来了！" />									
+				</Trigger>
+    			<Action Type="COMMAND" Command="ROLL_CAMERA" Params="400, 200" />	
+    			<Action Type="COMMAND" Command="DELAY" Params="800" /> 				
+				<Action Type="TALK">
+					<Msg NpcID="30" ImageID="2" Info="【@nick】你来了，\n过来一下，到我身边来——" />								
+					<Option Info="（⊙⊙）嗯" />
+				</Action>
+    			<Action Type="COMMAND" Command="RESTORE_CAMERA" />													
+    		</Event>
+		</Step>
+		
+	
+  		<Step ID="2" ParentList="1" ParentCost="1" >
+    		<Event Memo="新的c勇士学员c，\nc摩尔王c在c国王呈见厅c接见！！" TargetMap="11307" >
+  				<Trigger>
+					<Item Type="ENTER_MAP" MapID="11307" />						
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="30" TaskOption="摩尔王我来了！" />									
+				</Trigger>
+				<Action Type="TALK">							
+					<Msg NpcID="30" ImageID="2" Info="来自未来，\n未来可能成为【摩尔勇士】的摩尔——" />	
+					<Msg NpcID="30" ImageID="1" Info="记不记得我说过——\n“成为摩尔勇士的道路绝不会比成为摩尔勇士简单”？" />	
+					<Msg NpcID="30" ImageID="1" Info="请随我来一下。" />
+					<Option Info="（⊙⊙）好的" />
+				</Action>
+   				<Action Type="COMMAND" Command="CHANGE_MAP" Params="11302, 1" />
+				<Action Type="TALK">							
+					<Msg NpcID="30" ImageID="1" Info="女神像下的石板上的就是【勇士协会之章】——\n记录着“成为摩尔勇士的道路”。" />	
+					<Option Info="勇士协会之章？" />
+				</Action>
+     			<Action Type="MOVIE" Url="task_26_2.swf" MapLevel="TASK" Pos="0,0" />	
+				<Action Type="TALK">							
+					<Msg NpcID="2" ImageID="10" Info="\n未来的勇士……\n我在时间锁链的另一端等着你……" />
+					<Option Info="时间女神……"  />
+				</Action>		
+     			<Action Type="MOVIE" Url="task_26_1.swf" MapLevel="CONTENT" Pos="0,0" SkipTrigger="Y" />							
+    		</Event>
+		</Step>
+  		<Step ID="3" ParentList="2" ParentCost="1" >
+    		<Event Memo="新的c勇士学员c，\nc摩尔王c在c国王呈见厅c接见！！！" TargetMap="11307">
+  				<Trigger>
+					<Item Type="NPC_OPTION" MapID="11307" ObjID="30" TaskOption="摩尔王我来了！" />			
+				</Trigger>
+				<Action Type="TALK">					
+					<Msg NpcID="30" ImageID="2" Info="已经成为摩尔勇士，获得“摩尔勇士”称号的有十二位摩尔。\n在今后修炼的道路上你可能会遇到它们。" />										
+					<Option Info="【十二勇士】？" />
+				</Action>
+     			<Action Type="MOVIE" Url="task_26_3.swf" MapLevel="TASK" Pos="0,0" />
+				<Action Type="TALK">														
+					<Msg NpcID="30" ImageID="1" Info="那么先完成你的协会导师的训练任务，\n获得“见习”称号，\n迈向成为【摩尔勇士】的道路——\n摩尔勇士万岁！" />	
+					<Option Info="摩尔勇士万岁！" />
+				</Action>																			
+    		</Event>
+		</Step>
+
+</Procedure>
+</Task>

@@ -1,0 +1,413 @@
+<Task ID="31" Memo="c勇士号水手c都回来啦，\n不去c修隐岛海岸c看看吗？" TargetMap="11701">  
+	<Procedure>   
+  		<Step ID="50" ParentList="0" ParentCost="0" >
+    		<Event Memo="c勇士号水手c都回来啦，\n不去c修隐岛海岸c看看吗？" TargetMap="11701" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11701" ObjID="60" TaskOption="有新发现吗？" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="58" ImageID="1" Info="……" />																	
+					<Msg NpcID="58" ImageID="1" Info="这座岛还没有完全对外开放……" />	
+					<Msg NpcID="58" ImageID="1" Info="这么辛苦才来到这里，\n就算要“买票参观”，我也愿意啊……" />																																	
+					<Option Info="(⊙o⊙)？" SkipTrigger="Y"/>
+					<Option Info="有事先走了" NextStep="50" />					
+				</Action>																		
+    		</Event>
+		</Step>								
+  		<Step ID="1" ParentList="50" ParentCost="1" >
+    		<Event Memo="c勇士号水手c都回来啦，\n不去c修隐岛海岸c看看吗？" TargetMap="11701" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11701" ObjID="60" TaskOption="不能去的地方？" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="58" ImageID="1" Info="看到那座高高的【锁修塔】了吗？\n有2个穿【银铠甲】的摩尔守在门口。" />																	
+					<Msg NpcID="58" ImageID="1" Info="他们挥着“魔法杖”说，只有“有实力的摩尔”才能通行！\n我们都是爱好和平的水手啊（T-T）……" />	
+					<Msg NpcID="58" ImageID="2" Info="【@nick】战胜过一整~~条风之龙，\n你一定很有实力！" />												
+					<Option Info="现在就找【“银铠甲”】！" />				
+				</Action>																		
+    		</Event>
+		</Step>					
+  		<Step ID="51" ParentList="1" ParentCost="1" >
+    		<Event Memo="去c锁修塔c要先找到穿c银铠甲c的摩尔，\n快去岛上找找看吧！\n（咦，有个“银铠甲摩尔”c职业c和小主人相同呢!）" TargetMap="11701" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11701" ObjID="60" TaskOption="找不到【银铠甲】摩尔" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="58" ImageID="1" Info="看到那座高高的【锁修塔】了吗？\n2个穿“银铠甲”的摩尔守在门口，不让我们进去！" />	
+					<Msg NpcID="58" ImageID="1" Info="还有一个在【锁修塔桥】上，\n一把巨剑的石像上面！" />	
+					<Msg NpcID="58" ImageID="1" Info="还有一个在【修隐岛中心地带】一棵大树下面！" />																																											
+					<Msg NpcID="58" ImageID="2" Info="【@nick】战胜过一整条风之龙，\n你一定能找到穿“银铠甲”的摩尔！" />													
+					<Option Info="现在就去！" NextStep="51" />				
+				</Action>																
+    		</Event>
+		</Step>				                          
+	
+	  	
+  		<Step ID="2" ParentList="1" ParentCost="1" >       <!-- 杰森 -->   
+			<Condition>
+				<Person Career="1" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="去c锁修塔c要先找到穿c银铠甲c的摩尔，\n快去岛上找找看吧！\n（咦，有个“银铠甲摩尔”c职业c和小主人相同呢~）" TargetMap="11703" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11703" ObjID="53" TaskOption="请让我进“塔”" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="53" ImageID="1" Info="你说【锁修塔】吗？\n塔里到处充满了脾气暴躁的“黑化精灵”。" />	
+					<Msg NpcID="53" ImageID="1" Info="如果你以为它们只是“拉拉美王”那种程度的对手，\n你就错了！" />	
+					<Option Info="……" />		
+				</Action>						
+				<Action Type="TALK">									
+					<Msg NpcID="401" ImageID="3" Info="（这位就是勇士协会最受欢迎的“白银导师”之一——\n他创造了非~~常厉害的【先制】技能！\n快去请教他吧~~~）" />													
+					<Option Info="我想学【先制】技能！" />			
+				</Action>		
+				<Action Type="TALK">
+					<Msg NpcID="53" ImageID="1" Info="我可以教给你。\n不过——有一个条件。\n（哈哈，你敢反驳吗？）" />													
+					<Option Info="什么条件？" />			
+				</Action>	
+				<Action Type="TALK">
+					<Msg NpcID="53" ImageID="1" Info="战胜【锁修塔】第4层的精灵【伊影】，\n它会给你【青之宝玉】作为凭证——\n这是目前证明你实力的最好方法。" />
+					<Msg NpcID="53" ImageID="1" Info="★友情提醒：你可能会在【锁修塔】里遇到“金甲剑魂”（一心想当勇士的“执著型”小精灵）。"  />																															
+					<Msg NpcID="53" ImageID="1" Info="这个象征“勇士协会”的【信仰臂章】送给你，\n戴在身上就能避免被它袭击。"  />																															
+					<Option Info="使命必达！" />			
+				</Action>																								
+    		</Event>
+    		<Event ConditionType="OUT" Memo="去c锁修塔c要先找到穿c银铠甲c的摩尔，\n快去岛上找找看吧！\n（咦，有个“银铠甲摩尔”c职业c和小主人相同呢~）" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11703" ObjID="53" TaskOption="请让我进“塔”" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="53" ImageID="1" Info="看你的装备就知道你不是【剑士】，\n我不能对你的安全负责！\n如果想进“锁修塔”，\n就去找【你的“白银”导师】吧！" />	
+					<Option Info="……" />		
+				</Action>																													
+    		</Event>			
+		</Step>		
+  		<Step ID="3" ParentList="1" ParentCost="1" >       <!-- 瑞凌 -->  
+			<Condition>
+				<Person Career="2" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="去c锁修塔c要先找到穿c银铠甲c的摩尔，\n快去岛上找找看吧！\n（咦，有个“银铠甲摩尔”c职业c和小主人相同呢~）" TargetMap="11702" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11702" ObjID="54" TaskOption="请让我进“塔”" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="54" ImageID="1" Info="你说【锁修塔】吗？\n塔里到处充满了脾气暴躁的“黑化精灵”。" />	
+					<Msg NpcID="54" ImageID="1" Info="如果你以为它们只是“拉拉美王”那种程度的对手，\n你就错了！" />													
+					<Option Info="……" />					
+				</Action>		
+				<Action Type="TALK">									
+					<Msg NpcID="401" ImageID="3" Info="（这位就是勇士协会最受欢迎的“白银导师”之一——\n他创造了非~~常厉害的【多重箭】技能！\n快去请教他吧~~~）" />													
+					<Option Info="我想学【多重箭】技能！" />			
+				</Action>		
+				<Action Type="TALK">
+					<Msg NpcID="54" ImageID="1" Info="我可以教给你。\n不过——有一个条件。\n（哈哈，你敢反驳吗？）" />													
+					<Option Info="什么条件？" />			
+				</Action>	
+				<Action Type="TALK">
+					<Msg NpcID="54" ImageID="1" Info="战胜【锁修塔】第4层的精灵【伊影】，\n它会给你【青之宝玉】作为凭证——\n这是目前证明你实力的最好方法。" />
+					<Msg NpcID="54" ImageID="1" Info="★友情提醒：你可能会在【锁修塔】里遇到“金甲剑魂”（一心想当勇士的“执著型”小精灵）。"  />																															
+					<Msg NpcID="54" ImageID="1" Info="这个象征“勇士协会”的【信仰臂章】送给你，\n戴在身上就能避免被它袭击。"  />	
+					<Option Info="使命必达！" />			
+				</Action>																				
+    		</Event>
+    		<Event ConditionType="OUT" Memo="去c锁修塔c要先找到穿c银铠甲c的摩尔，\n快去岛上找找看吧！\n（咦，有个“银铠甲摩尔”c职业c和小主人相同呢~）" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11703" ObjID="54" TaskOption="请让我进“塔”" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="54" ImageID="1" Info="看你的装备就知道你不是【弓箭手】，\n我不能对你的安全负责！\n如果想进“锁修塔”，\n就去找【你的“白银”导师】吧！" />	
+					<Option Info="……" />		
+				</Action>																													
+    		</Event>			
+		</Step>			
+  		<Step ID="4" ParentList="1" ParentCost="1" >       <!-- 彼得 -->
+			<Condition>
+				<Person Career="3" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="去c锁修塔c要先找到穿c银铠甲c的摩尔，\n快去岛上找找看吧！\n（咦，有个“银铠甲摩尔”c职业c和小主人相同呢~）" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11704" ObjID="55" TaskOption="请让我进“塔”" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="55" ImageID="1" Info="你说【锁修塔】吗？\n塔里到处充满了脾气暴躁的“黑化精灵”。" />	
+					<Msg NpcID="55" ImageID="1" Info="如果你以为它们只是“拉拉美王”那种程度的对手，\n你就错了！" />													
+					<Option Info="……" />					
+				</Action>		
+				<Action Type="TALK">									
+					<Msg NpcID="401" ImageID="3" Info="（这位就是勇士协会最受欢迎的“白银导师”之一——\n他创造了非~~常厉害的【生命汲取】技能！\n快去请教他吧~~~）" />													
+					<Option Info="我想学【生命汲取】技能！" />			
+				</Action>		
+				<Action Type="TALK">
+					<Msg NpcID="55" ImageID="1" Info="我可以教给你。\n不过——有一个条件。\n（哈哈，你敢反驳吗？）" />													
+					<Option Info="什么条件？" />			
+				</Action>	
+				<Action Type="TALK">
+					<Msg NpcID="55" ImageID="1" Info="战胜【锁修塔】第4层的精灵【伊影】，\n它会给你【青之宝玉】作为凭证——\n这是目前证明你实力的最好方法。" />					
+					<Msg NpcID="55" ImageID="1" Info="★友情提醒：你可能会在【锁修塔】里遇到“金甲剑魂”（一心想当勇士的“执著型”小精灵）。"  />																															
+					<Msg NpcID="55" ImageID="1" Info="这个象征“勇士协会”的【信仰臂章】送给你，\n戴在身上就能避免被它袭击。"  />	
+					<Option Info="使命必达！" />			
+				</Action>																		
+    		</Event>
+    		<Event ConditionType="OUT" Memo="去c锁修塔c要先找到穿c银铠甲c的摩尔，\n快去岛上找找看吧！\n（咦，有个“银铠甲摩尔”c职业c和小主人相同呢~）" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11703" ObjID="55" TaskOption="请让我进“塔”" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="55" ImageID="1" Info="看你的装备就知道你不是【魔法师】，\n我不能对你的安全负责啊。\n如果想进“锁修塔”，\n就去找【你的“白银”导师】吧！" />	
+					<Option Info="……" />		
+				</Action>																													
+    		</Event>			
+		</Step>		
+  		<Step ID="5" ParentList="1" ParentCost="1" >       <!-- 温蒂 -->
+			<Condition>
+				<Person Career="4" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="去c锁修塔c要先找到穿c银铠甲c的摩尔，\n快去岛上找找看吧！\n（咦，有个“银铠甲摩尔”c职业c和小主人相同呢~）" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11704" ObjID="56" TaskOption="请让我进“塔”" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="56" ImageID="1" Info="你说【锁修塔】吗？\n塔里到处充满了脾气暴躁的“黑化精灵”。" />	
+					<Msg NpcID="56" ImageID="1" Info="它们可不是“拉拉美王”那种程度的对手。" />													
+					<Option Info="……" />					
+				</Action>		
+				<Action Type="TALK">									
+					<Msg NpcID="401" ImageID="3" Info="（这位就是勇士协会最受欢迎的“白银导师”之一——\n他创造了非~~常厉害的【治愈结界】技能！\n快去请教他吧~~~）" />													
+					<Option Info="我想学【治愈结界】技能！" />			
+				</Action>		
+				<Action Type="TALK">
+					<Msg NpcID="56" ImageID="1" Info="我可以教给你。\n不过——有一个条件。\n（不许反驳^_^）" />													
+					<Option Info="什么条件？" />			
+				</Action>	
+				<Action Type="TALK">
+					<Msg NpcID="56" ImageID="1" Info="战胜【锁修塔】第4层的精灵【伊影】，\n它会给你【青之宝玉】作为凭证——\n这是目前证明你实力的最好方法。" />
+					<Msg NpcID="56" ImageID="1" Info="★友情提醒：你可能会在【锁修塔】里遇到“金甲剑魂”（一心想当勇士的“执著型”小精灵）。"  />																															
+					<Msg NpcID="56" ImageID="1" Info="这个象征“勇士协会”的【信仰臂章】送给你，\n戴在身上就能避免被它袭击。"  />						
+					<Option Info="使命必达！" />			
+				</Action>																		
+    		</Event>
+    		<Event ConditionType="OUT" Memo="去c锁修塔c要先找到穿c银铠甲c的摩尔，\n快去岛上找找看吧！\n（咦，有个“银铠甲摩尔”c职业c和小主人相同呢~）" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11703" ObjID="56" TaskOption="请让我进“塔”" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="56" ImageID="1" Info="看你的装备不像一名【传教士】呢，\n我不能对你的安全负责~\n如果想进“锁修塔”，\n就去找【你的“白银”导师】吧！" />	
+					<Option Info="……" />		
+				</Action>																													
+    		</Event>			
+		</Step>		
+<!-- 节点1↑ --> 		
+
+<!-- 提示↓ --> 
+		<Step ID="6" ParentList="2, 3, 4, 5, 51" ParentCost="1" SkipList="3, 4, 5, 51">       <!-- 杰森 -->   			
+    		<Event Memo="小主人快向“白银导师”证明自己的实力吧\n——战胜c锁修塔c第4层的精灵c伊影c，\n获得c青之宝玉c！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11703" ObjID="53" TaskOption="打不过【伊影】啊" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="53" ImageID="1" Info="遇到小小挫折就退缩了吗？\n想学【先制】技能就打起精神，证明你的实力！" />
+					<Msg NpcID="53" ImageID="1" Info="★友情提醒：你可能会在【锁修塔】里遇到“金甲剑魂”（一心想当勇士的“执著型”小精灵）。"  />																															
+					<Msg NpcID="53" ImageID="1" Info="这个象征“勇士协会”的【信仰臂章】送给你，\n戴在身上就能避免被它袭击。"  />						
+					<Option Info="使命必达！" NextStep="6" />					
+				</Action>																		
+    		</Event>
+		</Step>		
+  		<Step ID="7" ParentList="3, 2, 4, 5, 51" ParentCost="1" SkipList="2, 4, 5, 51">       <!-- 瑞凌 -->  			
+    		<Event Memo="小主人快向“白银导师”证明自己的实力吧\n——战胜c锁修塔c第4层的精灵c伊影c，\n获得c青之宝玉c！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11702" ObjID="54" TaskOption="打不过【伊影】啊" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="54" ImageID="1" Info="遇到小小挫折就退缩了吗？\n想学【多重箭】技能就打起精神，证明你的实力！" />
+					<Msg NpcID="54" ImageID="1" Info="★友情提醒：你可能会在【锁修塔】里遇到“金甲剑魂”（一心想当勇士的“执著型”小精灵）。"  />																															
+					<Msg NpcID="54" ImageID="1" Info="这个象征“勇士协会”的【信仰臂章】送给你，\n戴在身上就能避免被它袭击。"  />					
+					<Option Info="使命必达！" NextStep="7" />					
+				</Action>																		
+    		</Event>
+		</Step>			
+  		<Step ID="8" ParentList="4, 2, 3, 5, 51" ParentCost="1" SkipList="2, 3, 5, 51">       <!-- 彼得 -->		
+    		<Event Memo="小主人快向“白银导师”证明自己的实力吧\n——战胜c锁修塔c第4层的精灵c伊影c，\n获得c青之宝玉c！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11704" ObjID="55" TaskOption="打不过【伊影】啊" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="55" ImageID="1" Info="遇到小小挫折就退缩了吗？\n想学【生命汲取】技能就打起精神，证明你的实力！" />
+					<Msg NpcID="55" ImageID="1" Info="★友情提醒：你可能会在【锁修塔】里遇到“金甲剑魂”（一心想当勇士的“执著型”小精灵）。"  />																															
+					<Msg NpcID="55" ImageID="1" Info="这个象征“勇士协会”的【信仰臂章】送给你，\n戴在身上就能避免被它袭击。"  />					
+					<Option Info="使命必达！" NextStep="8" />					
+				</Action>																		
+    		</Event>
+		</Step>		
+  		<Step ID="9" ParentList="5, 2, 3, 4, 51" ParentCost="1" SkipList="2, 3, 4, 51">       <!-- 温蒂 -->		
+    		<Event Memo="小主人快向“白银导师”证明自己的实力吧\n——战胜c锁修塔c第4层的精灵c伊影c，\n获得c青之宝玉c！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11704" ObjID="56" TaskOption="打不过【伊影】啊" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="56" ImageID="1" Info="我相信【@nick】一定能做到。\n得到【青之宝玉】，我就教你【治愈结界】技能^_^！" />
+					<Msg NpcID="56" ImageID="1" Info="★友情提醒：你可能会在【锁修塔】里遇到“金甲剑魂”（一心想当勇士的“执著型”小精灵）。"  />																															
+					<Msg NpcID="56" ImageID="1" Info="这个象征“勇士协会”的【信仰臂章】送给你，\n戴在身上就能避免被它袭击。"  />					
+					<Option Info="使命必达！" NextStep="9" />					
+				</Action>																		
+    		</Event>
+		</Step>	
+
+
+
+  		<Step ID="10" ParentList="2, 3, 4, 5" ParentCost="1" >
+    		<Event Memo="小主人快向“白银导师”证明自己的实力吧\n——战胜c锁修塔c第4层的精灵c伊影c，\n获得c青之宝玉c！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="ENTER_MAP" MapID="21701" />								
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="401" ImageID="1" Info="右边的【树藤】刚才悄悄告诉我，\n它害怕精灵【幽光战士】用剑斩断自己~" />	
+					<Msg NpcID="401" ImageID="2" Info="我告诉它，\n为了给“未来勇士”【@nick】开辟道路，\n不能害怕小小的疼痛呀~~" />													
+					<Option Info="马上契约【幽光战士】！" />				
+				</Action>																		
+    		</Event>
+		</Step>
+  		<Step ID="11" ParentList="10" ParentCost="1" >
+    		<Event Memo="小主人快向“白银导师”证明自己的实力吧\n——战胜c锁修塔c第4层的精灵c伊影c，\n获得c青之宝玉c！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="ENTER_MAP" MapID="21702" />								
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="401" ImageID="3" Info="这里就是传说中【会消失的阶梯】~~\n【@nick】要小心注意脚下！" />	
+					<Option Info="谢谢提醒！" />				
+				</Action>																		
+    		</Event>
+		</Step>			
+  		<Step ID="12" ParentList="11" ParentCost="1" >
+    		<Event Memo="小主人快向“白银导师”证明自己的实力吧\n——战胜c锁修塔c第4层的精灵c伊影c，\n获得c青之宝玉c！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="ENTER_MAP" MapID="21703" />								
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="401" ImageID="3" Info="点亮【闪光】能改变阶梯的方向，\n注意点亮【顺序】哦~~" />	
+					<Msg NpcID="401" ImageID="9" Info="别问我为什么知道，\n你的“白银导师”让我转告你(^o^)！" />						
+					<Option Info="谢谢提醒！" />				
+				</Action>																		
+    		</Event>
+		</Step>	
+  		<Step ID="13" ParentList="12" ParentCost="1" >
+    		<Event Memo="小主人快向“白银导师”证明自己的实力吧\n——战胜c锁修塔c第4层的精灵c伊影c，\n获得c青之宝玉c！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="ENTER_MAP" MapID="21704" />								
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="401" ImageID="9" Info="咦，我闻到了【伊影】的气息！\n就在那座【水晶柱】附近！" />	
+					<Option Info="谢谢提醒！" />			
+				</Action>																		
+    		</Event>
+		</Step>	
+  		<Step ID="14" ParentList="13" ParentCost="1" >
+    		<Event Memo="小主人快向“白银导师”证明自己的实力吧\n——战胜c锁修塔c第4层的精灵c伊影c，\n获得c青之宝玉c！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="21704" ObjID="337" TaskOption="请给我【青之宝玉】" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="337" ImageID="1" Info="颤抖吧，鼹鼠！！\n我就是传说中的“伊恩大魔王”……\n……\n的影子。" />	
+					<Msg NpcID="337" ImageID="1" Info="让你见识真正的“黑水晶力量”——" />													
+					<Option Info="我准备下" />				
+				</Action>																		
+    		</Event>
+		</Step>			
+  		<Step ID="15" ParentList="14, 6, 7, 8, 9" ParentCost="1"  SkipList="6, 7, 8, 9">
+			<Condition>
+				<Item ID="260023" Count="1" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="战胜c伊影c获得了c青之宝玉c↖(^ω^)↗\n咦，c伊影c在叫小主人？" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="21704" ObjID="337" TaskOption="你败啦↖(^ω^)↗！" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="337" ImageID="1" Info="……\n不要小看这座塔里的黑化精灵，\n即使是时之女神，和你的“白银导师”也无法彻底净化我们……" />	
+					<Msg NpcID="337" ImageID="1" Info="每一个成功的大魔王背后都有一批忠诚的小精灵！" />													
+					<Option Info="……" />				
+				</Action>																		
+    		</Event>
+    		<Event ConditionType="OUT" Memo="小主人快向“白银导师”证明自己的实力吧\n——战胜c锁修塔c第4层的精灵c伊影c，\n获得c青之宝玉c！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="21704" ObjID="337" TaskOption="请给我【青之宝玉】！" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="337" ImageID="1" Info="先让你见识真正的黑水晶力量——" />	
+					<Option Info="来战吧！" />
+					<Option Info="我准备下" NextStep="15" />					
+				</Action>	
+    			<Action Type="COMMAND" Command="BATTLE" Params="2010" /> 																	
+    		</Event>			
+		</Step>			
+<!-- 节点2↑ --> 			
+		
+		
+		<Step ID="16" ParentList="15" ParentCost="1" >        <!-- 杰森 -->   
+			<Condition>
+				<Person Career="1" />
+			</Condition>						
+    		<Event ConditionType="IN" Memo="战胜c伊影c获得c青之宝玉c，终于可以学习新技能了↖(^ω^)↗\n快去报告小主人的c白银导师c吧！" TargetMap="11703" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11703" ObjID="53" TaskOption="请教我【新技能】！" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="53" ImageID="1" Info="哈，好久没教【先制】技能了，\n我要复习下。" />													
+					<Msg NpcID="53" ImageID="1" Info="【先制】是剑士的“得意技能”。\n多多练习，保证你拥有“非~~一般”的实力！" />	
+					<Msg NpcID="53" ImageID="1" Info="★记得来找我学【先制技能】！" />																														
+					<Option Info="马上学【技能】！" />					
+				</Action>																		
+    		</Event>
+		</Step>		
+  		<Step ID="17" ParentList="15" ParentCost="1">       <!-- 瑞凌 -->  	
+			<Condition>
+				<Person Career="2" />
+			</Condition>					
+    		<Event ConditionType="IN" Memo="战胜c伊影c获得了c青之宝玉c↖(^ω^)↗\n快去报告小主人的c白银导师c吧！" TargetMap="11702" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11702" ObjID="54" TaskOption="请教我【新技能】！" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="54" ImageID="1" Info="哈，好久没教【多重箭】技能了，\n我要复习下。" />													
+					<Msg NpcID="54" ImageID="1" Info="【多重箭】是弓箭手的“得意技能”。\n多多练习，保证你拥有“非~~一般”的实力！" />	
+					<Msg NpcID="54" ImageID="1" Info="★记得来找我学【多重箭技能】！" />																														
+					<Option Info="马上学【技能】！" />					
+				</Action>																		
+    		</Event>
+		</Step>			
+  		<Step ID="18" ParentList="15" ParentCost="1">       <!-- 彼得 -->	
+			<Condition>
+				<Person Career="3" />
+			</Condition>				
+    		<Event ConditionType="IN" Memo="战胜c伊影c获得了c青之宝玉c↖(^ω^)↗\n快去报告小主人的c白银导师c吧！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11704" ObjID="55" TaskOption="请教我【新技能】！" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="55" ImageID="1" Info="哈，好久没教【生命汲取】技能了，\n我要复习下。" />													
+					<Msg NpcID="55" ImageID="1" Info="【生命汲取】是魔法师的“得意技能”。\n多多练习，保证你拥有“非~~一般”的实力！" />	
+					<Msg NpcID="55" ImageID="1" Info="★记得来找我学【生命汲取】！" />																														
+					<Option Info="马上学【技能】！" />						
+				</Action>																		
+    		</Event>
+		</Step>		
+  		<Step ID="19" ParentList="15" ParentCost="1">       <!-- 温蒂 -->		
+			<Condition>
+				<Person Career="4" />
+			</Condition>			
+    		<Event ConditionType="IN" Memo="战胜c伊影c获得了c青之宝玉c↖(^ω^)↗\n快去报告小主人的c白银导师c吧！" TargetMap="" >
+  				<Trigger>					
+					<Item Type="NPC_OPTION" MapID="11704" ObjID="56" TaskOption="请教我【新技能】！" />									
+				</Trigger> 				
+				<Action Type="TALK">
+					<Msg NpcID="56" ImageID="1" Info="哈，好久没教【治愈结界】技能了，\n我要复习下。" />													
+					<Msg NpcID="56" ImageID="1" Info="【治愈结界】是传教士的“得意技能”。\n多多练习，你一定会拥有“非~~一般”的实力^_^！" />	
+					<Msg NpcID="56" ImageID="1" Info="★记得来找我学【治愈结界技能】！" />																														
+					<Option Info="马上学【技能】！" />																		
+				</Action>																		
+    		</Event>
+		</Step>			
+		
+		
+		
+		
+									
+</Procedure>
+</Task>
