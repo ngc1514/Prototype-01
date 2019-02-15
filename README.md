@@ -1,4 +1,4 @@
 # Protocol-01
-Game in development
-Engine: Phaser.io
-Run home.html in mainPackage
+Game in development <br />
+Engine: Phaser.io <br />
+Run home.html in mainPackage <br />
