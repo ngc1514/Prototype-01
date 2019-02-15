@@ -1,3 +1,4 @@
+// test game js file
 var platforms;
 var score = 0;
 var scoreText;
