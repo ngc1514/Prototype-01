@@ -1,4 +1,4 @@
-# Protocol-01
+# Prototype-01
 Game in development <br />
 Engine: Phaser.io <br />
 
