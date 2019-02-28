@@ -1,3 +1,5 @@
+#A Player class. For later use probably.
+
 import sys
 
 class Player:
