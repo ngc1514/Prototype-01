@@ -4,7 +4,7 @@ var game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'phaser-example', { preload
 function preload()
 {
     game.load.image('background','map.png');
-    game.load.image('bullet', 'assets/sprites/bullet.png');
+    game.load.image('bullet', 'fireball.png');
     game.load.spritesheet('player', 'move.png', 72, 62, 4);
 }
 
@@ -15,23 +15,25 @@ var weapon;
 
 function create()
 {
-    game.add.tileSprite(0, 0, 1920, 1920, 'background');
-    game.world.setBounds(0, 0, 1920, 1920);
+    var randomLocationList = spawn();
+
+    game.add.tileSprite(0, 0, 5000, 5000, 'background');
+    game.world.setBounds(0, 0, 5000, 5000);
 
     //  Creates 30 bullets, using the 'bullet' graphic
     weapon = game.add.weapon(30, 'bullet');
     //  The bullet will be automatically killed when it leaves the world bounds
     weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
     //  The speed at which the bullet is fired
-    weapon.bulletSpeed = 1600;
+    weapon.bulletSpeed = 1300;
     //  Speed-up the rate of fire, allowing them to shoot 1 bullet every 60ms
     weapon.fireRate = 250;
 
-    player = this.add.sprite(game.world.centerX, game.world.centerY, 'player');
+    player = this.add.sprite(randomLocationList[0], randomLocationList[1], 'player'); //game.world.centerX, game.world.centerY, 'player');
     player.anchor.set(0.5);
 
     game.physics.arcade.enable(player);
-    var walk = player.animations.add('walk', [0,1], 12, true);
+    var walk = player.animations.add('walk', [0,1], 10, true);
 
     weapon.trackSprite(player, 0, 0);
     game.camera.follow(player);
@@ -96,6 +98,13 @@ function update()
 // function showFacing() {
 //     text.setText("- facing: \n" + facing)
 // }
+
+
+function spawn(){
+    var x = Math.floor(Math.random()*5000);
+    var y = Math.floor(Math.random()*5000);
+    return [x, y];
+}
 
 //debug info
 function render() {
