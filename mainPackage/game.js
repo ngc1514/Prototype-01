@@ -1,3 +1,6 @@
+//Don't run this for now. This is the wrong code.
+//Use the camera package.
+
 var platforms;
 var score = 0;
 var scoreText;
