@@ -50,7 +50,8 @@ function create ()
     this.anims.create({
         key: 'up_down',
         frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 1 }),
-        frameRate: 12
+        frameRate: 12,
+        repeat: -1
     });
     this.anims.create({
         key: 'right',
