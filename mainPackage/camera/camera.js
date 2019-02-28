@@ -1,5 +1,9 @@
 
 var game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+var facing = 'up'; //Its a string - left right up down
+var player;
+var cursors;
+var weapon;
 
 function preload()
 {
@@ -8,14 +12,9 @@ function preload()
     game.load.spritesheet('player', 'move.png', 72, 62, 4);
 }
 
-var facing = 'up'; //Its a string - left right up down
-var player;
-var cursors;
-var weapon;
-
 function create()
 {
-    var randomLocationList = spawn();
+    var randomLocationList = spawnPlayer();
 
     game.add.tileSprite(0, 0, 5000, 5000, 'background');
     game.world.setBounds(0, 0, 5000, 5000);
@@ -100,7 +99,7 @@ function update()
 // }
 
 
-function spawn(){
+function spawnPlayer(){
     var x = Math.floor(Math.random()*5000);
     var y = Math.floor(Math.random()*5000);
     return [x, y];
