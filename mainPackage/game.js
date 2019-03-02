@@ -44,6 +44,9 @@ function create ()
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
     player.body.setGravityY(0);//300)
+
+    //game.camera.follow(player); //camera will follow the player
+
     this.anims.create({
         key: 'left',
         frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 1 }),
@@ -133,7 +136,7 @@ function update ()
         player.x -= 4;
         player.anims.play('left', true);
     }
-    else if (cursors.right.isDown) {
+    if (cursors.right.isDown) {
         displayXY(player)
         player.x += 4;
         player.anims.play('right', true);
