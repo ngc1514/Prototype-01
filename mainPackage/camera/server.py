@@ -19,15 +19,16 @@ def home():
 
 # change this into flask
 # flask, read request body decode things
-@post('/register')
+@app.route('/register', methods=['POST'])
 def register_player_info():
-    content = bottle.request.body.read().decode() # this is in bottle
+    content = Flask.request.data # this is in bottle
     content = json.loads(content)
     backEnd.registerPlayer(content)
 
+
 # update the player data
-@post('/update')
+@app.route('/update', methods=['POST'])
 def update_player():
-    content = bottle.request.body.read().decode() # this is in bottle
+    content = Flask.request.data
     content = json.loads(content)
     backEnd.update_player(content)
