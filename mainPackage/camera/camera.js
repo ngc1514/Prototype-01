@@ -60,7 +60,6 @@ function preload() {
     game.load.spritesheet('enemy', 'guy.png');
 }
 
-var facing = 'up'; //Its a string - left right up down
 var player;
 var cursors;
 
@@ -75,13 +74,15 @@ var bullets;
 var fireRate = 300;
 var nextFire = 0;
 
+var infoDict = {
+    "playerID": "",
+    "playerHP": 0,
+    "currentLoc": [0,0], //[3000, 3000],
+    "isAlive": true
+};
 var playerID;
 var playerHP;
 var isAlive;
-var playerX;
-var playerY;
-
-var wKey;
 
 //create instances and variables that are necessary for the game
 function create()
@@ -132,13 +133,6 @@ function create()
     cursors = this.input.keyboard.createCursorKeys();
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-    wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
-    // this.w = game.input.keyboard.addKey(Phaser.Keyboard.W);
-    // this.s = game.input.keyboard.addKey(Phaser.Keyboard.S);
-    // this.a = game.input.keyboard.addKey(Phaser.Keyboard.A);
-    // this.d = game.input.keyboard.addKey(Phaser.Keyboard.A);
-
-
     text = game.add.text(game.world.centerX, game.world.centerY, "Current_loc: \n", {
         font: "25px Arial",
         fill: "#ff0044",
@@ -162,46 +156,44 @@ function update()
             enemies[i].update();
         }
     }
-    if(wKey.isDown){
-        text.setText("fuck yeh");
-    }
     if(cursors.up.isDown){
         showText();
-        facing = 'up';
         player.y -= 5;
+        updateStatus();
         player.play('walk');
-        playerX = player.x;
-        playerY = player.y;
     }
     if(cursors.down.isDown){
         showText();
-        facing = 'down';
         player.y += 5;
+        updateStatus();
         player.play('walk');
     }
     if(cursors.left.isDown){
         showText();
-        facing = 'left';
         player.x -= 5;
+        updateStatus();
         player.play('walk');
     }
     if(cursors.right.isDown){
         showText();
-        facing = 'right';
         player.x += 5;
+        updateStatus();
         player.play('walk');
     }
     if (game.input.activePointer.isDown) {
         showText();
         player.tint = 0xff0000;
+        updateStatus();
         fire();
     }
     else if (game.input.activePointer.isUp) {
         showText();
         player.tint = 0xffffff;
+        updateStatus();
     }
 }
 
+//debug
 function showText() {
     text.setText("Current_loc: \n" + player.x + ", " + player.y + "\n" +
         "playerHp is: " + playerHP + ", " + isAlive + "\n" +
@@ -215,8 +207,7 @@ function spawnPlayer(){
     return [x, y];
 }
 
-function fire()
-{
+function fire() {
     if (game.time.now > nextFire && bullets.countDead() > 0)
     {
         nextFire = game.time.now + fireRate;
@@ -226,8 +217,7 @@ function fire()
     }
 }
 
-function bulletHitEnemy (tank, bullet)
-{
+function bulletHitEnemy (tank, bullet) {
     tank.tint = 0xff0000;
     bullet.kill();
     enemies[tank.name].damage();
@@ -242,41 +232,43 @@ function bulletHitPlayer (tank, bullet) {
     playerHP--;
     if(playerHP <= 0) {
         bullet.kill();
+        player.kill();
     }
-    // bullet.kill();
+    else{
+        bullet.kill();
+    }
 }
 
-//convert player data to json and send
-function toJson(player)
+//return a json string with player information
+function toJson()
 {
-    var returnDict = {
-        "PlayerID": playerID,
-        "playerHP": playerHP,
-        "currentLoc": [player.x, player.y], //[3000, 3000],
-        "type": "human",
-        "isAlive": player.alive
-    }
+    return JSON.stringify(infoDict);
 }
-function getData(){
+function updateStatus(){
+    infoDict['playerID'] = playerID;
+    infoDict['playerHP'] = playerHP;
+    infoDict['currentLoc'] = [player.x, player.y];
+    infoDict['isAlive'] = player.alive;
+}
+function postData(){
     var xhr = new XMLHttpRequest();
-    var url = "url";
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.open("POST", "/update", true);
+    xhr.setRequestHeader("Content-Type", toJson());
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            var json = JSON.parse(xhr.responseText);
-            console.log(json.email + ", " + json.password);
+            // var json = JSON.parse(xhr.responseText);
+            // console.log(json.email + ", " + json.password);
         }
     };
-    var data = JSON.stringify({"playerID": playerID, "playerHP": playerHP, "score": score});
+    var data = JSON.stringify(infoDict);
     xhr.send(data);
 }
+
 
 //debug info
 function render() {
     game.debug.cameraInfo(game.camera, 32, 32);
     game.debug.spriteCoords(player, 32, 600);
-    game.debug.text(facing, 600, 32);
     game.debug.text('Active Bullets: ' + bullets.countLiving() + ' / ' + bullets.total, 900, 60);
     game.debug.spriteInfo(player, 32, 350);
     game.debug.text('Enemies: ' + enemiesAlive + ' / ' + enemiesTotal, 900, 32);
