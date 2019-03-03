@@ -1,0 +1,16 @@
+{
+  "players": [
+    {
+      "playerID": "admin",
+      "playerHP": 1000,
+      "currentLoc": [300, 350],
+      "isAlive": true
+    },
+    {
+      "playerID": "shesky17",
+      "playerHP": 2,
+      "currentLoc": [100, 150],
+      "isAlive": true
+    }
+  ]
+}
