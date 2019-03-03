@@ -221,12 +221,6 @@ function bulletHitEnemy (tank, bullet) {
     tank.tint = 0xff0000;
     bullet.kill();
     enemies[tank.name].damage();
-    // var destroyed = enemies[tank.name].damage();
-    // if (destroyed) {
-    //     var explosionAnimation = explosions.getFirstExists(false);
-    //     explosionAnimation.reset(tank.x, tank.y);
-    //     explosionAnimation.play('kaboom', 30, false, true);
-    // }
 }
 function bulletHitPlayer (tank, bullet) {
     playerHP--;

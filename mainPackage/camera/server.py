@@ -17,7 +17,6 @@ def home():
     return render_template('camera.html') # render a template
 
 
-# change this into flask
 # flask, read request body decode things
 @app.route('/register', methods=['POST'])
 def register_player_info():
@@ -32,3 +31,7 @@ def update_player():
     content = Flask.request.data
     content = json.loads(content)
     backEnd.update_player(content)
+
+
+if __name__ == '__main__':
+    app.run() #host='127.0.0.1')
