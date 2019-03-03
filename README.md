@@ -2,4 +2,5 @@
 Game in development <br />
 Engine: Phaser <br />
 
-# Run camera.html in camera package for now <br />
+# URGENT <br />
+Run server.py to run the game. I changed the whole project structure.
