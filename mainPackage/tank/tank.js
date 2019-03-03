@@ -75,15 +75,14 @@ EnemyTank.prototype.update = function()
 
 var game = new Phaser.Game(1280, 720, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
-function preload () {
-
+function preload ()
+{
     game.load.atlas('tank', 'tanks.png');//, 'tanks.json');
     game.load.atlas('enemy', 'enemy-tanks.png', 'tanks.json');
     //game.load.image('logo', 'logo.png');
     game.load.image('bullet', 'bullet.png');
     game.load.image('earth', 'map.png');
     game.load.spritesheet('kaboom', 'explosion.png', 64, 64, 23);
-
 }
 
 var land;
@@ -145,7 +144,6 @@ function create ()
     enemies = [];
     enemiesTotal = 20;
     enemiesAlive = 20;
-
     for (var i = 0; i < enemiesTotal; i++)
     {
         enemies.push(new EnemyTank(i, game, tank, enemyBullets));
@@ -167,7 +165,6 @@ function create ()
 
     //  Explosion pool
     explosions = game.add.group();
-
     for (var i = 0; i < 10; i++)
     {
         var explosionAnimation = explosions.create(0, 0, 'kaboom', [0], false);
@@ -181,6 +178,7 @@ function create ()
     logo = game.add.sprite(0, 200, 'logo');
     logo.fixedToCamera = true;
 
+    //click and start game
     game.input.onDown.add(removeLogo, this);
 
     game.camera.follow(tank);
@@ -191,10 +189,8 @@ function create ()
 }
 
 function removeLogo () {
-
     game.input.onDown.remove(removeLogo, this);
     logo.kill();
-
 }
 
 function update ()
@@ -278,4 +274,3 @@ function render () {
     // game.debug.text('Active Bullets: ' + bullets.countLiving() + ' / ' + bullets.length, 32, 32);
     game.debug.text('Enemies: ' + enemiesAlive + ' / ' + enemiesTotal, 32, 32);
 }
-
