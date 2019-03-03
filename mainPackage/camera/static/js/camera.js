@@ -53,11 +53,17 @@ EnemyTank.prototype.update = function()
 
 var game = new Phaser.Game(1280, 720, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
+
+function url_for(category, assetName) {
+    // the returned urls should point to a static file handler (nginx, flask, etc)
+    return category + assetName;
+}
 function preload() {
-    game.load.image('./static/image/background','map.png');
-    game.load.image('./static/image/bullet', 'fireball.png');
-    game.load.spritesheet('./static/image/player', 'move.png', 72, 62, 4); //size 72, 62, 4 fps
-    game.load.spritesheet('./static/image/enemy', 'guy.png');
+    game.load.image('background', url_for('static/image/', 'map.png'));
+    // game.load.image('background','map.png');
+    game.load.image('bullet', url_for('static/image/', 'fireball.png'));
+    game.load.spritesheet('player', url_for('static/image/', 'move.png'), 72, 62, 4); //size 72, 62, 4 fps
+    game.load.spritesheet('enemy', url_for('static/image/', 'guy.png'));
 }
 
 var player;
