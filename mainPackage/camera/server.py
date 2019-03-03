@@ -9,29 +9,37 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html') # render a template
+    return render_template('index.html')  # render a template
 
 
 @app.route('/game')
 def home():
-    return render_template('camera.html') # render a template
+    return render_template('camera.html')  # render a template
 
 
 # flask, read request body decode things
+# Nick and Jake will finish this part
+# Fix AttributeError: type object 'Flask' has no attribute 'request'
 @app.route('/register', methods=['POST'])
 def register_player_info():
-    content = Flask.request.data # this is in bottle
+    content = Flask.request.data
     content = json.loads(content)
     backEnd.registerPlayer(content)
 
 
-# update the player data
+# update the player data. will fix it later
 @app.route('/update', methods=['POST'])
 def update_player():
-    content = Flask.request.data
-    content = json.loads(content)
-    backEnd.update_player(content)
+    # content = Flask.request.get_date()
+    # content = json.loads(content)
+    # backEnd.update_player(content)
+    return ''
+
+# @app.route('/map.png')
+# def showMap():
+#     return send_from_directory('/static/image/', "map.png")
 
 
 if __name__ == '__main__':
-    app.run() #host='127.0.0.1')
+    app.run(debug=True)  # host='127.0.0.1')
+
