@@ -1,4 +1,4 @@
-EnemyTank = function (index, game, player, bullets)
+Enemy = function (index, game, player, bullets)
 {
     var x = 3000; //game.world.randomX;
     var y = 3000; //game.world.randomY;
@@ -26,7 +26,7 @@ EnemyTank = function (index, game, player, bullets)
     game.physics.arcade.velocityFromRotation(this.tank.rotation, 100, this.tank.body.velocity);
 };
 
-EnemyTank.prototype.damage = function()
+Enemy.prototype.damage = function()
 {
     this.health -= 1;
     if (this.health <= 0)
@@ -38,7 +38,7 @@ EnemyTank.prototype.damage = function()
     return false;
 };
 
-EnemyTank.prototype.update = function()
+Enemy.prototype.update = function()
 {
     if (this.game.physics.arcade.distanceBetween(this.tank, this.player) < 300)
     {
@@ -60,7 +60,6 @@ function url_for(category, assetName) {
 }
 function preload() {
     game.load.image('background', url_for('static/image/', 'map.png'));
-    // game.load.image('background','map.png');
     game.load.image('bullet', url_for('static/image/', 'fireball.png'));
     game.load.spritesheet('player', url_for('static/image/', 'move.png'), 72, 62, 4); //size 72, 62, 4 fps
     game.load.spritesheet('enemy', url_for('static/image/', 'guy.png'));
@@ -123,7 +122,7 @@ function create()
     enemiesTotal = 5;
     enemiesAlive = 5;
     for (var i = 0; i < enemiesTotal; i++) {
-        enemies.push(new EnemyTank(i, game, tank, enemyBullets));
+        enemies.push(new Enemy(i, game, tank, enemyBullets));
     }
 
     player = this.add.sprite(spawnPlayer()[0], spawnPlayer()[1], 'player'); //game.world.centerX, game.world.centerY, 'player');
@@ -199,7 +198,7 @@ function update()
     }
 }
 
-//debug
+//debug text
 function showText() {
     text.setText("Current_loc: \n" + player.x + ", " + player.y + "\n" +
         "playerHp is: " + playerHP + ", " + isAlive + "\n" +
