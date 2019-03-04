@@ -35,10 +35,6 @@ def update_player():
     # backEnd.update_player(content)
     return ''
 
-# @app.route('/map.png')
-# def showMap():
-#     return send_from_directory('/static/image/', "map.png")
-
 
 if __name__ == '__main__':
     app.run(debug=True)  # host='127.0.0.1')
