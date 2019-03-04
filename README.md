@@ -1,6 +1,7 @@
 # Prototype-01
 Game in development <br />
 Engine: Phaser <br />
+Web server: Flask <br />
 
 # URGENT <br />
 Always use the camera package. The others are just for testing. <br/>
