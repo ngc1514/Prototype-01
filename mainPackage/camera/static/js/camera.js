@@ -202,7 +202,7 @@ function update()
 function showText() {
     text.setText("Current_loc: \n" + player.x + ", " + player.y + "\n" +
         "playerHp is: " + playerHP + ", " + isAlive + "\n" +
-        "enermies[0] HP is: " + enemies[0].health + ", " + enemies[0].alive);
+        "enemies[0] HP is: " + enemies[0].health + ", " + enemies[0].alive);
 }
 
 //spawn player. Location will be random.
