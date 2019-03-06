@@ -32,7 +32,7 @@ def register_player_info():
 def update_player():
     # content = Flask.request.get_date()
     # content = json.loads(content)
-    # backEnd.update_player(content)
+    # backEnd.update_player(content, "playerInfo.json")
     return ''
 
 
