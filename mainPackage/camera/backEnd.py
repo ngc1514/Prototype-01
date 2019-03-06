@@ -10,46 +10,49 @@ def initializeData():
 
 # initialize and add a new player to testData.json
 # newPlayerInfo is a json string
-def registerPlayer(newPlayerInfo):
+def registerPlayer(newPlayerInfo, filename):
     obj = ''
-    with open("playerInfo.json") as f:
+    with open(filename) as f:
         obj = json.load(f)
         obj['players'].append(newPlayerInfo)
     print(obj)
-    with open('testData.json', 'w') as f:
+    with open(filename, 'w') as f:
         json.dump(obj, f)
 
 
 # update the player information
-# playerInfo is a json string
-def update_player(playerInfo):
-    with open("playerInfo.json") as f:
+# the player must be in the the database already
+# playerInfo is a dict
+def update_player(playerInfo, filename):
+    with open(filename) as f:
         obj = json.load(f)
         for info in obj['players']:
             if info['playerID'] == playerInfo['playerID']:
                 info['playerHP'] = playerInfo['playerHP']
                 info['currentLoc'] = playerInfo['currentLoc']
                 info['isAlive'] = playerInfo["isAlive"]
-        with open('testData.json', 'w') as f:
+            else:
+                print("Not this player: " + info['playerID'])
+        with open(filename, 'w') as f:
             json.dump(obj, f)
 
 # initializeData()
 # test1 = {
-#             "playerID": "test",
+#             "playerID": "testDummy",
 #             "playerHP": 555,
 #             "currentLoc": [0, 0],
 #             "isAlive": True
 #             }
 # registerPlayer(test1)
 # overwrite = {
-#     "playerID": "admin",
-#     "playerHP": 1,
+#     "playerID": "shesky17",
+#     "playerHP": 1000000,
 #     "currentLoc": [111, 111],
 #     "isAlive": True
 # }
-# update_player(overwrite)
+# update_player(overwrite, "playerInfo.json")
 #
-# with open("testData.json") as f:
+# with open("playerInfo.json") as f:
 #     obj = json.load(f)
-#     print(obj)
+#     print("now the json file is: " + "\n" + str(obj))
 
