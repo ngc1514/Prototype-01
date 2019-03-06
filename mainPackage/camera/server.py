@@ -21,7 +21,7 @@ def home():
 # Nick and Jake will finish this part
 # Fix AttributeError: type object 'Flask' has no attribute 'request'
 @app.route('/register', methods=['POST'])
-def register_player_info():
+def registerPlayer_info():
     content = Flask.request.data
     content = json.loads(content)
     backEnd.registerPlayer(content)
@@ -29,14 +29,14 @@ def register_player_info():
 
 # update the player data. will fix it later
 @app.route('/update', methods=['POST'])
-def update_player():
+def updatePlayer():
     content = Flask.request.get_date()
     content = json.loads(content)
     backEnd.update_player(content, "playerInfo.json")
     return ''
 
 @app.route('/remove', methods=['POST'])
-def remove_player():
+def removePlayer():
     content = Flask.request.get_date()
     content = json.loads(content)
     backEnd.removePlayer(content, "playerInfo.json")

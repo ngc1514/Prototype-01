@@ -2,9 +2,9 @@
 import json
 
 
-def initializeData():
-    with open("playerInfo.json", 'w') as f:
-        jsonData = {"players" : []}
+def initializeData(filename):
+    with open(filename, 'w') as f:
+        jsonData = {"players": []}
         json.dump(jsonData, f)
 
 
@@ -23,7 +23,7 @@ def registerPlayer(newPlayerInfo, filename):
 # update the player information
 # the player must be in the the database already
 # playerInfo is a dict
-def update_player(playerInfo, filename):
+def updatePlayer(playerInfo, filename):
     with open(filename) as f:
         obj = json.load(f)
         for info in obj['players']:
@@ -40,9 +40,11 @@ def update_player(playerInfo, filename):
 def removePlayer(playerInfo, filename):
     with open(filename) as f:
         obj = json.load(f)
-        for info in obj['players']:
+        for idx, info in enumerate(obj['players']):
             if info['playerID'] == playerInfo['playerID']:
-                obj['players'].remove(info)
+                del obj['players'][idx]
+        with open(filename, 'w') as f:
+            json.dump(obj, f)
 
 
 # initializeData()
