@@ -11,7 +11,7 @@ class UnitTesting(unittest.TestCase):
         # will change shesky17 hp to 9999
         with open("testUpdateJson.json") as f:
             originalJson = json.load(f)
-        with open("varifyJson.json") as f:
+        with open("varifyUpdate.json") as f:
             expectedJsonStr = json.load(f)
         testJson = {
                     "playerID": "shesky17",
@@ -19,7 +19,7 @@ class UnitTesting(unittest.TestCase):
                     "currentLoc": [0, 0],
                     "isAlive": True
                     }
-        backEnd.update_player(testJson, "testUpdateJson.json")
+        backEnd.updatePlayer(testJson, "testUpdateJson.json")
         with open("testUpdateJson.json") as f:
             updated = json.load(f)
 
@@ -27,9 +27,7 @@ class UnitTesting(unittest.TestCase):
         print("The updated data: " + str(updated))
         print("The expected data: " + str(expectedJsonStr))
 
-        if(str(updated) == str(expectedJsonStr)):
-            self.assertTrue(str(updated) == str(expectedJsonStr))
-            print("Passed.")
+        self.assertTrue(str(updated) == str(expectedJsonStr))
 
         # reset data after testing
         defaultJson = {"players": [{"playerID": "admin", "playerHP": 1, "currentLoc": [111, 111], "isAlive": True}, {"playerID": "shesky17", "playerHP": 2, "currentLoc": [0, 0], "isAlive": True}]}
