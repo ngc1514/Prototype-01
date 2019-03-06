@@ -14,7 +14,7 @@ def index():
 
 @app.route('/game')
 def home():
-    return render_template('camera.html')  # render a template
+    return render_template('game.html')  # render a template
 
 
 # flask, read request body decode things
