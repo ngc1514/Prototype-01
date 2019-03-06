@@ -1,1 +1,1 @@
-{"players": [{"playerID": "admin", "playerHP": 1, "currentLoc": [111, 111], "isAlive": true}, {"playerID": "shesky17", "playerHP": 2, "currentLoc": [100, 150], "isAlive": true}, {"playerID": "testDummy", "playerHP": 555, "currentLoc": [0, 0], "isAlive": true}]}
+{"players": [{"playerID": "admin", "playerHP": 1, "currentLoc": [111, 111], "isAlive": true}, {"playerID": "shesky17", "playerHP": 9999, "currentLoc": [111, 111], "isAlive": true}]}
