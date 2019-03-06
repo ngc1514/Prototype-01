@@ -30,11 +30,16 @@ def register_player_info():
 # update the player data. will fix it later
 @app.route('/update', methods=['POST'])
 def update_player():
-    # content = Flask.request.get_date()
-    # content = json.loads(content)
-    # backEnd.update_player(content, "playerInfo.json")
+    content = Flask.request.get_date()
+    content = json.loads(content)
+    backEnd.update_player(content, "playerInfo.json")
     return ''
 
+@app.route('/remove', methods=['POST'])
+def remove_player():
+    content = Flask.request.get_date()
+    content = json.loads(content)
+    backEnd.removePlayer(content, "playerInfo.json")
 
 if __name__ == '__main__':
     app.run(debug=True)  # host='127.0.0.1')

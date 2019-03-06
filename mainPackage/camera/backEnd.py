@@ -36,6 +36,15 @@ def update_player(playerInfo, filename):
         with open(filename, 'w') as f:
             json.dump(obj, f)
 
+
+def removePlayer(playerInfo, filename):
+    with open(filename) as f:
+        obj = json.load(f)
+        for info in obj['players']:
+            if info['playerID'] == playerInfo['playerID']:
+                obj['players'].remove(info)
+
+
 # initializeData()
 # test1 = {
 #             "playerID": "testDummy",
