@@ -8,14 +8,19 @@ def initializeData(filename):
         json.dump(jsonData, f)
 
 
-# initialize and add a new player to testData.json
+# add a new player to testData.json
 # newPlayerInfo is a json string
-def registerPlayer(newPlayerInfo, filename):
+def registerPlayer(playerName, filename):
     obj = ''
     with open(filename) as f:
+        newData = {
+            "playerID": json.loads(playerName),
+            "playerHP": 2,
+            "currentLoc": [0, 0],
+            "isAlive": True
+        }
         obj = json.load(f)
-        obj['players'].append(newPlayerInfo)
-    print(obj)
+        obj['players'].append(newData)
     with open(filename, 'w') as f:
         json.dump(obj, f)
 
@@ -37,6 +42,7 @@ def updatePlayer(playerInfo, filename):
             json.dump(obj, f)
 
 
+# when a player quit the game
 def removePlayer(playerInfo, filename):
     with open(filename) as f:
         obj = json.load(f)

@@ -1,6 +1,6 @@
 # this is the server file
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import backEnd
 import json
 
@@ -22,24 +22,28 @@ def home():
 # Fix AttributeError: type object 'Flask' has no attribute 'request'
 @app.route('/register', methods=['POST'])
 def registerPlayer_info():
-    content = Flask.request.data
-    content = json.loads(content)
-    backEnd.registerPlayer(content)
+    content = request.get_data().decode()
+    # content = json.loads(content)
+    backEnd.registerPlayer(content, 'playerInfo.json')
+    print(content)
+    return content
 
 
 # update the player data. will fix it later
 @app.route('/update', methods=['POST'])
 def updatePlayer():
-    content = Flask.request.get_date()
+    content = request.data
     content = json.loads(content)
     backEnd.update_player(content, "playerInfo.json")
     return ''
 
+
 @app.route('/remove', methods=['POST'])
 def removePlayer():
-    content = Flask.request.get_date()
+    content = request.get_date()
     content = json.loads(content)
     backEnd.removePlayer(content, "playerInfo.json")
+
 
 if __name__ == '__main__':
     app.run(debug=True)  # host='127.0.0.1')

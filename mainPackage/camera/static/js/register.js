@@ -11,16 +11,11 @@ function registerPlayer()
         alert("Please enter a valid name!")
     }
     else{
-        var messageElement = document.getElementById("playerID");
-        messageElement.value = "";
-        var toSend = JSON.stringify(
-            {
-                "playerID": playerID,
-                "playerHP": initHP,
-                "currentLoc": initLoc,
-                "isAlive": initAlive
-            });
-        ajaxPostRequest("/register", toSend);
+        // solve the backslash issue
+        var messageElement = document.getElementById("playerID").value;
+        //messageElement.value = "";
+        //var toSend = JSON.stringify(messageElement);
+        ajaxPostRequest("/register", messageElement);
     }
 }
 
