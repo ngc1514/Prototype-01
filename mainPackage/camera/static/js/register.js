@@ -5,14 +5,15 @@ var initAlive = true;
 function registerPlayer()
 {
     //$("#message").val().trim().length < 1
-    var comment = document.getElementById("playerID").value;
-    if(comment.length == 0 || comment.length>10)
+    var inputID = document.getElementById("playerID").value;
+    if(inputID.length == 0 || inputID.length>10)
     {
         alert("Please enter a valid name!")
     }
     else{
         // solve the backslash issue
         var messageElement = document.getElementById("playerID").value;
+        document.getElementById("playerID").value = ""; //clear the box after input
         ajaxPostRequest("/register", messageElement);
     }
 }
