@@ -145,7 +145,7 @@ function create()
         align: "center"
     });
     text.fixedToCamera = true;
-    text.cameraOffset.setTo(500, 350);
+    text.cameraOffset.setTo(500, 400);
 }
 
 //all the key listeners
