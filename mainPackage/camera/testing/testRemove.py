@@ -12,13 +12,8 @@ class UnitTesting(unittest.TestCase):
             originalJson = json.load(f)
         with open("varifyRemove.json") as f:
             expectedJsonStr = json.load(f)
-        testJson = {
-            "playerID": "shesky17",
-            "playerHP": 9999,
-            "currentLoc": [0, 0],
-            "isAlive": True
-        }
-        backEnd.removePlayer(testJson, "testRemoveJson.json")
+        testName = "shesky17"
+        backEnd.removePlayer(testName, "testRemoveJson.json")
         with open("testRemoveJson.json") as f:
             removed = json.load(f)
 

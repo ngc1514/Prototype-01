@@ -11,7 +11,6 @@ function registerPlayer()
         alert("Please enter a valid name!")
     }
     else{
-        // solve the backslash issue
         var messageElement = document.getElementById("playerID").value.replace(/\s+/g, '');
         document.getElementById("playerID").value = ""; //clear the box after input
         ajaxPostRequest("/register", messageElement);

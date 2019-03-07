@@ -47,7 +47,7 @@ def removePlayer(playerName, filename):
     with open(filename) as f:
         obj = json.load(f)
         for idx, info in enumerate(obj['players']):
-            if info['playerID'] == playerName['playerID']:
+            if info['playerID'] == playerName:
                 del obj['players'][idx]
         with open(filename, 'w') as f:
             json.dump(obj, f)

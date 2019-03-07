@@ -39,9 +39,10 @@ def updatePlayer():
 
 @app.route('/remove', methods=['POST'])
 def removePlayer():
-    content = request.get_date()
+    content = request.get_data().decode()
     # content = json.loads(content)
     backEnd.removePlayer(content, "playerInfo.json")
+    return content
 
 
 @app.route('/players', methods=['GET'])

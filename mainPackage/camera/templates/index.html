@@ -6,6 +6,7 @@
 
     <script src="{{ url_for('static', filename = 'js/register.js') }}" ></script>
     <script src="{{ url_for('static', filename = 'js/login.js') }}" ></script>
+    <script src="{{ url_for('static', filename = 'js/remove.js') }}" ></script>
 
     <!--<script src="./static/js/game.js"></script>-->
     <meta charset="UTF-8">
@@ -14,12 +15,17 @@
 
 <body>
     <div id="inputBox">
-        <font size="5"> Enter your name to register then click start game: </font> <br> <br>
+        <font size="5"> Create an player ID to register then click start to play: </font> <br> <br>
         <textarea rows="1" cols="20" id="playerID" onKeyPress="checkEnter(event);"> </textarea> <br> <br>
         <button type='button' class='block' onClick="registerPlayer();" > Submit </button> <br> <br>
     </div>
 
-    <!--Fix this on Thursday-->
+    <div id="testRemove">
+        <font size="5"> Enter your id and delete your data: </font> <br> <br>
+        <textarea rows="1" cols="20" id="removeID" onKeyPress="checkEnter(event);"> </textarea> <br> <br>
+        <button type='button' class='block  ' onClick="removePlayer();" > Remove </button> <br> <br>
+    </div>
+
     <form id="form_id" method="post" name="myform">
         <label>Player ID :</label>
         <input type="text" name="username" id="loginID"/>
