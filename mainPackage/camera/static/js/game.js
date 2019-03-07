@@ -11,7 +11,7 @@ Enemy = function (index, game, player, bullets)
     this.nextFire = 0;
     this.alive = true;
 
-    this.tank = game.add.sprite(x, y, 'enemy', 'guy.png');
+    this.tank = game.add.sprite(x, y, 'enemy', 'ghost.png');
 
     this.tank.anchor.set(0.5);
 
@@ -62,7 +62,7 @@ function preload() {
     game.load.image('background', url_for('static/image/', 'map.png'));
     game.load.image('bullet', url_for('static/image/', 'fireball.png'));
     game.load.spritesheet('player', url_for('static/image/', 'move.png'), 72, 62, 4); //size 72, 62, 4 fps
-    game.load.spritesheet('enemy', url_for('static/image/', 'guy.png'));
+    game.load.spritesheet('enemy', url_for('static/image/', 'ghost.png'));
 }
 
 var text;
@@ -209,8 +209,8 @@ function showText() {
 
 //spawn player. Location will be random.
 function spawnPlayer(){
-    var x = Math.floor(Math.random()*1280); //5000);
-    var y = Math.floor(Math.random()*720); //5000);
+    var x = Math.floor(Math.random()*5000);
+    var y = Math.floor(Math.random()*5000);
     return [x, y];
 }
 
