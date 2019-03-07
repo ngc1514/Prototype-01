@@ -13,8 +13,6 @@ function registerPlayer()
     else{
         // solve the backslash issue
         var messageElement = document.getElementById("playerID").value;
-        //messageElement.value = "";
-        //var toSend = JSON.stringify(messageElement);
         ajaxPostRequest("/register", messageElement);
     }
 }
@@ -23,7 +21,6 @@ function ajaxPostRequest(path, data){
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if (this.readyState === 4 && this.status === 200){
-            //callback(this.response);
         }
     };
     request.open("POST", path);

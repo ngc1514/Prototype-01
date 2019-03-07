@@ -14,7 +14,7 @@ def registerPlayer(playerName, filename):
     obj = ''
     with open(filename) as f:
         newData = {
-            "playerID": json.loads(playerName),
+            "playerID": playerName,
             "playerHP": 2,
             "currentLoc": [0, 0],
             "isAlive": True
