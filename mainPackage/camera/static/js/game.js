@@ -1,7 +1,7 @@
 Enemy = function (index, game, player, bullets)
 {
-    var x = 3000; //game.world.randomX;
-    var y = 3000; //game.world.randomY;
+    var x = game.world.randomX;
+    var y = game.world.randomY;
 
     this.game = game;
     this.health = 2;
@@ -65,6 +65,7 @@ function preload() {
     game.load.spritesheet('enemy', url_for('static/image/', 'guy.png'));
 }
 
+var text;
 var player;
 var cursors;
 
@@ -94,8 +95,8 @@ function create()
 {
     tank = game.add.sprite(0, 0, 'enemy');
 
-    game.add.tileSprite(0, 0, 1280, 720, 'background');//; 5000, 5000, 'background');
-    game.world.setBounds(0, 0, 1280, 720); //5000, 5000);
+    game.add.tileSprite(0, 0, 5000, 5000, 'background');//; 5000, 5000, 'background');
+    game.world.setBounds(0, 0, 5000, 5000); //5000, 5000);
     //  This will force it to decelerate and limit its speed
     game.physics.enable(tank, Phaser.Physics.ARCADE);
     tank.body.collideWorldBounds = true;
@@ -119,8 +120,8 @@ function create()
 
     //  Create some baddies to waste :)
     enemies = [];
-    enemiesTotal = 5;
-    enemiesAlive = 5;
+    enemiesTotal = 30;
+    enemiesAlive = 30;
     for (var i = 0; i < enemiesTotal; i++) {
         enemies.push(new Enemy(i, game, tank, enemyBullets));
     }
@@ -143,7 +144,8 @@ function create()
         fill: "#ff0044",
         align: "center"
     });
-    text.anchor.setTo(0.5, 0.5);
+    text.fixedToCamera = true;
+    text.cameraOffset.setTo(500, 350);
 }
 
 //all the key listeners
