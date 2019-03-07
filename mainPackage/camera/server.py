@@ -25,7 +25,6 @@ def registerPlayer_info():
     content = request.get_data().decode()
     # content = json.loads(content)
     backEnd.registerPlayer(content, 'playerInfo.json')
-    print(content)
     return content
 
 
