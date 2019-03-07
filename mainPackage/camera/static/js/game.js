@@ -95,8 +95,8 @@ function create()
 {
     tank = game.add.sprite(0, 0, 'enemy');
 
-    game.add.tileSprite(0, 0, 5000, 5000, 'background');//; 5000, 5000, 'background');
-    game.world.setBounds(0, 0, 5000, 5000); //5000, 5000);
+    game.add.tileSprite(0, 0, 3000, 5000, 'background');//; 5000, 5000, 'background');
+    game.world.setBounds(0, 0, 3000, 5000); //5000, 5000);
     //  This will force it to decelerate and limit its speed
     game.physics.enable(tank, Phaser.Physics.ARCADE);
     tank.body.collideWorldBounds = true;
