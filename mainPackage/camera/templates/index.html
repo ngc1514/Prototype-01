@@ -5,6 +5,8 @@
     <script src="https://cdn.jsdelivr.net/npm/phaser-ce@2.12.0/build/phaser.min.js"></script>
 
     <script src="{{ url_for('static', filename = 'js/register.js') }}" ></script>
+    <script src="{{ url_for('static', filename = 'js/login.js') }}" ></script>
+
     <!--<script src="./static/js/game.js"></script>-->
     <meta charset="UTF-8">
     <title>Login page</title>
@@ -17,7 +19,12 @@
         <button type='button' class='block' onClick="registerPlayer();" > Submit </button> <br> <br>
     </div>
 
-
+    <!--Fix this on Thursday-->
+    <form id="form_id" method="post" name="myform">
+        <label>Player ID :</label>
+        <input type="text" name="username" id="loginID"/>
+        <input type="button" value="Login" id="submit" onclick="login()"/>
+    </form>
     <a href="/game" title="start">Start Game</a>
 </body>
 </html>
