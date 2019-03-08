@@ -9,12 +9,14 @@ class UnitTesting(unittest.TestCase):
         pass
 
     def testCheckRegister(self):
-        with open("varifyRegister.json") as f:
+        with open("testDatabase/varifyRegister.json") as f:
             initialized = json.load(f)
 
         print("The data is: " + str(initialized))
 
-        self.assertTrue(backEnd.checkRegister("shesky17", "varifyRegister.json"))
+        checkName = "shesky17"
+
+        self.assertTrue(backEnd.checkRegister(checkName, "testDatabase/varifyRegister.json"))
 
 
 if __name__ == '__main__':

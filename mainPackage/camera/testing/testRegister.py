@@ -8,18 +8,13 @@ class UnitTesting(unittest.TestCase):
         pass
 
     def testRegister(self):
-        with open("testRegisterJson.json") as f:
+        with open("testDatabase/testRegisterJson.json") as f:
             originalJson = json.load(f)
-        with open("varifyRegister.json") as f:
+        with open("testDatabase/varifyRegister.json") as f:
             expectedJsonStr = json.load(f)
-        testJson = {
-            "playerID": "shesky17",
-            "playerHP": 9999,
-            "currentLoc": [0, 0],
-            "isAlive": True
-        }
-        backEnd.registerPlayer(testJson, "testRegisterJson.json")
-        with open("testRegisterJson.json") as f:
+        testID = "shesky17"
+        backEnd.registerPlayer(testID, "testDatabase/testRegisterJson.json")
+        with open("testDatabase/testRegisterJson.json") as f:
             registered = json.load(f)
 
         print("The original data: "+ str(originalJson))
@@ -30,9 +25,9 @@ class UnitTesting(unittest.TestCase):
 
         # reset data after testing
         defaultJson = {"players": []}
-        with open("testRegisterJson.json", "w") as f:
+        with open("testDatabase/testRegisterJson.json", "w") as f:
             json.dump(defaultJson, f)
-        with open("testRegisterJson.json") as f:
+        with open("testDatabase/testRegisterJson.json") as f:
             resetData = json.load(f)
         print("Now resetting the data: " + "\n" + str(resetData))
 
