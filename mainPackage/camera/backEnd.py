@@ -53,6 +53,18 @@ def removePlayer(playerName, filename):
             json.dump(obj, f)
 
 
+# # return true if player already registered
+# def checkRegister(inputID, filename):
+#     isIn = False
+#     with open(filename) as f:
+#         obj = json.load(f)
+#         playerDicts = obj['players']
+#         for info in playerDicts:
+#             if(inputID == info['playerID']):
+#                 isIn = True
+#     return isIn
+
+
 # initializeData()
 # test1 = {
 #             "playerID": "testDummy",

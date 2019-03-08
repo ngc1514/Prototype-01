@@ -13,6 +13,7 @@ function registerPlayer()
     else{
         var messageElement = document.getElementById("playerID").value.replace(/\s+/g, '');
         document.getElementById("playerID").value = ""; //clear the box after input
+        alert(inputID + " is now registered.");
         ajaxPostRequest("/register", messageElement);
     }
 }

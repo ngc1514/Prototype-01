@@ -9,6 +9,7 @@ function removePlayer()
     else{
         var messageElement = document.getElementById("removeID").value.replace(/\s+/g, '');
         document.getElementById("removeID").value = ""; //clear the box after input
+        alert(inputID + "'s data is now deleted.");
         ajaxPostRequest("/remove", messageElement);
     }
 }
@@ -22,3 +23,4 @@ function ajaxPostRequest(path, data){
     request.open("POST", path);
     request.send(data);
 }
+
