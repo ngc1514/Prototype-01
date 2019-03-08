@@ -1,4 +1,3 @@
-# this is going to be the backend stuff
 import json
 
 
@@ -8,10 +7,8 @@ def initializeData(filename):
         json.dump(jsonData, f)
 
 
-# add a new player to testData.json
-# newPlayerInfo is a json string
+# add a new player to player database
 def registerPlayer(playerName, filename):
-    obj = ''
     with open(filename) as f:
         newData = {
             "playerID": playerName,
@@ -53,16 +50,21 @@ def removePlayer(playerName, filename):
             json.dump(obj, f)
 
 
-# # return true if player already registered
-# def checkRegister(inputID, filename):
-#     isIn = False
-#     with open(filename) as f:
-#         obj = json.load(f)
-#         playerDicts = obj['players']
-#         for info in playerDicts:
-#             if(inputID == info['playerID']):
-#                 isIn = True
-#     return isIn
+def eliminate(playerInfo, filename):
+    if playerInfo['playerHP'] <= 0:
+        removePlayer(playerInfo['playerID'], filename)
+
+
+# return true if player already registered
+def checkRegister(inputID, filename):
+    isIn = False
+    with open(filename) as f:
+        obj = json.load(f)
+        playerDicts = obj['players']
+        for info in playerDicts:
+            if inputID == info['playerID']:
+                isIn = True
+    return isIn
 
 
 # initializeData()
