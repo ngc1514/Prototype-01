@@ -77,12 +77,13 @@
     <textarea rows="1" cols="20" id="playerID" onKeyPress="checkEnter(event);"> </textarea> <br> <br>
     <button type='button' class='block' onClick="registerPlayer();" > Register Name </button> <br> <br>
 </div>
+
 <div id="enter">
     <a href="/game" title="start">Enter the Arena</a>
 </div>
 
 
-</div>
+
 
 <div class="tab">
     <button class="tablinks" onclick="bottomTabs(event, 'Rules')">Rules</button>
@@ -90,7 +91,7 @@
     <button class="tablinks" onclick="bottomTabs(event, 'Controls')">Controls</button>
 </div>
 <script>
-    function bottomTabs(evt, cityName) {
+    function bottomTabs(evt, head) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
@@ -100,7 +101,7 @@
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
-        document.getElementById(cityName).style.display = "block";
+        document.getElementById(head).style.display = "block";
         evt.currentTarget.className += " active";
     }
 </script>
@@ -123,21 +124,7 @@
     <p>Control your character using the WASD keys, and left click the mouse to shoot. You will automatically pick up anything you walk over.</p>
 </div>
 
-<script>
-    function bottomTabs(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-</script>
+
 <img src="cover2.png">
 </body>
 </html>
