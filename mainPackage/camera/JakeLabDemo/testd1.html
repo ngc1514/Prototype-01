@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/phaser-ce@2.12.0/build/phaser.min.js"></script>
+
+    <script src="register.js" ></script>
+    <script src="login.js"></script>
+
+    <!--<script src="./static/js/game.js"></script>-->
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <style>
+        body {font-family: Arial;}
+
+        /* tab styling */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* color of background when hovering over with mouse */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* styling text inside tab */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            width: auto\9; /* ie8 */
+        }
+        h1 {
+            text-align: center;
+            color: #f0f6ff;
+        }
+        body {
+             background-color: #7f8691;
+         }
+
+
+
+    </style>
+</head>
+
+<body>
+
+<img src="cool.png">
+
+<div id="inputBox">
+
+     <br> <br>
+    <textarea rows="1" cols="20" id="playerID" onKeyPress="checkEnter(event);"> </textarea> <br> <br>
+    <button type='button' class='block' onClick="registerPlayer();" > Register Name </button> <br> <br>
+</div>
+<div id="enter">
+    <a href="/game" title="start">Enter the Arena</a>
+</div>
+
+
+</div>
+
+<div class="tab">
+    <button class="tablinks" onclick="bottomTabs(event, 'Rules')">Rules</button>
+    <button class="tablinks" onclick="bottomTabs(event, 'How to Play')">How to Play</button>
+    <button class="tablinks" onclick="bottomTabs(event, 'Controls')">Controls</button>
+</div>
+<script>
+    function bottomTabs(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+<div id="Rules" class="tabcontent">
+    <h3>Rules</h3>
+    <p>Welcome to Super Battle Arena! This is an always online multiplayer battle royale, where each player must fight
+    to stay alive the longest. Each player spawns in a random location on the map, and must find weapons and armor on the ground.
+    Once you have been killed, your score resets to 0 and you may enter again.</p>
+</div>
+
+<div id="How to Play" class="tabcontent">
+    <h3>How to Play</h3>
+    <p>Enter a name for yourself in the registration box above. Names are not unique, so feel free to be whoever you want.
+    Afterwards, click Submit to create your character, and then enter the arena whenever you feel prepared.</p>
+</div>
+
+<div id="Controls" class="tabcontent">
+    <h3>Controls</h3>
+    <p>Control your character using the WASD keys, and left click the mouse to shoot. You will automatically pick up anything you walk over.</p>
+</div>
+
+<script>
+    function bottomTabs(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+<img src="cover2.png">
+</body>
+</html>
