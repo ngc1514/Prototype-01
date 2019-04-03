@@ -1,1 +1,1 @@
-from apppack import app
+from NickLab1ServerDemo.apppack import app

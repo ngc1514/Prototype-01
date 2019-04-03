@@ -1,5 +1,5 @@
 from flask import Flask
-from config import Config
+from NickLab1ServerDemo.config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
@@ -11,4 +11,4 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 
-from apppack import routes, models
+from NickLab1ServerDemo.apppack import routes, models

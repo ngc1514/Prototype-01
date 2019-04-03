@@ -1,8 +1,8 @@
-from apppack import app, db
+from NickLab1ServerDemo.apppack import app, db
 from flask import render_template, flash, redirect, url_for, request
-from apppack.forms import LoginForm, RegistrationForm
+from NickLab1ServerDemo.apppack.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
-from apppack.models import User
+from NickLab1ServerDemo.apppack.models import User
 from werkzeug.urls import url_parse
 
 
