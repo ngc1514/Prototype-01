@@ -1,4 +1,3 @@
-
 EnemyTank = function (index, game, player, bullets)
 {
     var x = game.world.randomX;
