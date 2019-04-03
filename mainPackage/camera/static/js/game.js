@@ -143,7 +143,7 @@ function create()
         stone = stones.create(game.world.randomX, game.world.randomY, 'stone');
         game.physics.enable(stone, Phaser.Physics.ARCADE);
         stone.body.immovable = true;
-        stone.scale.setTo(0.5,0.5);
+        stone.scale.setTo(0.6,0.6);
     }
 
     var walk = player.animations.add('walk', [0,1], 10, true);
