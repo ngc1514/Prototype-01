@@ -98,7 +98,7 @@ function create()
     game.add.tileSprite(0, 0, 2000, 2000, 'background');//; 5000, 5000, 'background');
     game.world.setBounds(0, 0, 2000, 2000); //5000, 5000);
 
-    tank = game.add.sprite(0, 0, 'enemy');
+    tank = game.add.sprite(3000, 3000, 'enemy'); //create an obj, hide it
     game.physics.enable(tank, Phaser.Physics.ARCADE);
     //game.physics.startSystem(Phaser.Physics.ARCADE);
     tank.body.collideWorldBounds = true;
