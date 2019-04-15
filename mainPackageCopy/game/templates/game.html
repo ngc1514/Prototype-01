@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/phaser-ce@2.12.0/build/phaser.min.js"></script>
+
+    <title> Game </title>
+</head>
+
+<body onload="">
+    <p align="left"> Arrow key to move. Use mouse to click and fire. </p>
+    <div id="game">
+        <script src="./static/js/game.js"></script>
+    </div>
+    <div id="testRemove">
+        <font size="5"> Reenter your name to save your stats and leave the battlefield </font> <br> <br>
+        <textarea rows="1" cols="20" id="removeID" onKeyPress="checkEnter(event);"> </textarea> <br> <br>
+        <button type='button' class='block  ' onClick="removePlayer();" > Remove </button> <br> <br>
+    </div>
+</body>
+</html>
