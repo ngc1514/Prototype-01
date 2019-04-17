@@ -1,6 +1,6 @@
 # this is the server file
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 import backEnd
 import json
 
@@ -50,6 +50,17 @@ def showPlayers():
     with open("playerInfo.json") as f:
         obj = json.load(f)
     return json.dumps(obj)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'Invalid Credentials. Please try again.'
+        else:
+            return redirect(url_for('home'))
+    return render_template('game.html', error=error)
 
 
 if __name__ == '__main__':

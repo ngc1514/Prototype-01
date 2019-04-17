@@ -28,11 +28,16 @@
 
     <br>
     <div id="login">
-        <font size="5"> Enter your id and delete your data: </font> <br> <br>
-        <textarea rows="1" cols="20" id="login" onKeyPress="checkEnter(event);"> </textarea> <br> <br>
-        <button type='button' class='block  ' onClick="login();" > Remove </button> <br> <br>
+        <form action="/game" method="post">
+            <label>
+                Enter your username to Login:
+                <input type="text" name="username"/>
+            </label>
+            <input type="submit"/>
+        </form>
     </div>
-    <input type="button" onclick="location.href='/game';" value="Start Game" />
+
+    <button type='button' class='block' onClick="location.href='/game'" > Game </button> <br> <br>
 
 </body>
 </html>
