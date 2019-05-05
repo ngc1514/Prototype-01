@@ -1,7 +1,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron');
-// const { fork } = require('child_process')
-// const ps = fork(`${__dirname}/server.js`)
+const { fork } = require('child_process')
+const ps = fork(`${__dirname}/server.js`)
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
