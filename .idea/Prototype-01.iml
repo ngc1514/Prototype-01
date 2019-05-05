@@ -10,8 +10,8 @@
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/Alpha/game" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Alpha" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Beta" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Alpha" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
