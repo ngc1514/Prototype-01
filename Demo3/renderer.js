@@ -13,8 +13,8 @@ Game.init = function(){
 
 Game.preload = function()
 {
-    game.load.image('background', 'assets/sprite/map.png');
-    game.load.spritesheet('sprite', 'assets/sprite/move.png', 72, 62, 4);
+    game.load.image('background', 'https://i.imgur.com/R9rXrjb.jpg');
+    game.load.spritesheet('sprite', 'https://i.imgur.com/yHXXjup.png', 72, 62, 4);
     // game.load.image('sprite','assets/sprite/guy.png');
 };
 
