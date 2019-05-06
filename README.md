@@ -1,5 +1,5 @@
 # Prototype-01
-&lt;/p&gt;Game in development <br />
+&nbsp;Game in development <br />
 &lt;/p&gt;Engine: Phaser 2.12 <br />
 &lt;/p&gt;Web server: NodeJS <br />
 
