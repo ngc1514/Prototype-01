@@ -15,10 +15,18 @@ Client.sendClick = function(x,y){
 };
 
 Client.sendLocation = function(x,y){
-  Client.socket.emit('newLocation', {x:x, y:y});
+    Client.socket.emit('newLocation', {x:x, y:y});
 };
 
-// Client.sendColor = function
+Client.getStones = function(){
+    Client.socket.emit('getStones');
+};
+
+Client.socket.on('giveStones', function(data){
+    for(var i =0; i<15; i++){
+        Game.addNewStone(data[i][0], data[i][1]);
+    }
+});
 
 Client.socket.on('newplayer', function(data){
     Game.addNewPlayer(data.id, data.x, data.y);
