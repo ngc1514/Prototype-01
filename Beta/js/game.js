@@ -66,7 +66,7 @@ Game.addNewStone = function(x,y){
     stone = stones.create(x, y, 'stone');
     game.physics.enable(stone, Phaser.Physics.ARCADE);
     stone.body.immovable = true;
-    stone.scale.setTo(0.6,0.6);
+    stone.scale.setTo(0.5,0.5);
 };
 
 Game.movePlayer = function(id,x,y){
@@ -111,21 +111,21 @@ Game.update = function()
     }
     if (cursors.up.isDown && hitPlatform) {
         player.x = tempX;
-        player.y = tempY + 23;
+        player.y = tempY + 20;
         Client.sendLocation(player.x, player.y);
     }
     if (cursors.down.isDown && hitPlatform) {
         player.x = tempX;
-        player.y = tempY - 23;
+        player.y = tempY - 20;
         Client.sendLocation(player.x, player.y);
     }
     if (cursors.right.isDown && hitPlatform) {
-        player.x = tempX - 23;
+        player.x = tempX - 20;
         player.y = tempY;
         Client.sendLocation(player.x, player.y);
     }
     if (cursors.left.isDown && hitPlatform) {
-        player.x = tempX + 23;
+        player.x = tempX + 20;
         player.y = tempY;
         Client.sendLocation(player.x, player.y);
     }
@@ -158,7 +158,7 @@ Game.bulletHitStone = function (bullet) {
 
 //debug text
 Game.showText = function () {
-    text.setText("Current Location: \n" + player.x + ", " + player.y);
+    text.setText("Current Location: \n" + player.x + ", " + player.y + "\nTotal player: \n" + Game.playerMap.length);
 };
 
 Game.spawnPlayer = function(){

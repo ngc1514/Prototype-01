@@ -23,7 +23,7 @@ Client.getStones = function(){
 };
 
 Client.socket.on('giveStones', function(data){
-    for(var i =0; i<15; i++){
+    for(var i =0; i<10; i++){
         Game.addNewStone(data[i][0], data[i][1]);
     }
 });
