@@ -49,7 +49,7 @@ io.on('connection', function(socket)
         });
 
         socket.on('disconnect',function(){
-            console.log('Player ' + socket.player.id + " disconnected. ");
+            console.log('\nPlayer ' + socket.player.id + " disconnected. \n");
             io.emit('remove',socket.player.id);
         });
     });
