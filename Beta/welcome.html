@@ -2,10 +2,6 @@
 <html lang="en">
 
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/phaser-ce@2.12.0/build/phaser.min.js"></script>
-
-    <script src="register.js" ></script>
-    <script src="login.js"></script>
 
     <!--<script src="./static/js/game.js"></script>-->
     <meta charset="UTF-8">
@@ -59,8 +55,8 @@
             color: #f0f6ff;
         }
         body {
-             background-color: #7f8691;
-         }
+            background-color: #7f8691;
+        }
 
 
 
@@ -69,27 +65,18 @@
 
 <body>
 
-<img src="Beta/welcomeImages/sbaheader.png">
-
-<div id="inputBox">
-
-     <br> <br>
-    <textarea rows="1" cols="20" id="playerID" onKeyPress="checkEnter(event);"> </textarea> <br> <br>
-    <button type='button' class='block' onClick="registerPlayer();" > Register Name </button> <br> <br>
-</div>
-
+<img src="welcomeImages/sbaheader.png">
 
 <div id="enter">
-    <a href="/" title="start">Enter the Arena</a>
+    <a href="/game" title="start">Enter the Battlefield</a>
 </div>
-
 
 
 
 <div class="tab">
-    <button class="tablinks" onclick="bottomTabs(event, 'Rules')">Rules</button>
-    <button class="tablinks" onclick="bottomTabs(event, 'How to Play')">How to Play</button>
-    <button class="tablinks" onclick="bottomTabs(event, 'Controls')">Controls</button>
+    <button class="tablinks" onclick="bottomTabs(event, 'Jake Heidman')">Rules</button>
+    <button class="tablinks" onclick="bottomTabs(event, 'Aiden Xie')">How to Play</button>
+    <button class="tablinks" onclick="bottomTabs(event, 'Nick Macris')">Controls</button>
 </div>
 <script>
     function bottomTabs(evt, head) {
@@ -108,26 +95,37 @@
 </script>
 
 
-<div id="Rules" class="tabcontent">
-    <h3>Rules</h3>
-    <p>Welcome to Super Battle Arena! This is an always online multiplayer battle royale, where each player must fight
-    to stay alive the longest. Each player spawns in a random location on the map, and must find weapons and armor on the ground.
-    Once you have been killed, your score resets to 0 and you may enter again.</p>
+
+<div id="Jake Heidman" class="tabcontent">
+    <h3>Jake Heidman</h3>
+    <p>The front end developer who also dabbled in backend jS functions, Jake can't wait to never touch this project again. He is looking forward to learning
+        more about data structures and algorithms, and cannot stress enough how much he hates game design.
+    </p>
+    <img src="welcomeImages/jake.jpg">
 </div>
 
-<div id="How to Play" class="tabcontent">
-    <h3>How to Play</h3>
-    <p>Enter a name for yourself in the registration box above. Names are not unique, so feel free to be whoever you want. *(will change)*
-    Afterwards, click Submit to create your character, and then enter the arena whenever you feel prepared.</p>
+<div id="Aiden Xie" class="tabcontent">
+    <h3>Aiden Xie</h3>
+    <p>Both the spiritual and physical leader of the project, Aiden carried the weight of the backend on his shoulders: delicately juggling the awfulness
+        of Phaser, as well as his side job as a superhero.
+    </p>
+    <img src="welcomeImages/aiden.jpg">
 </div>
 
-<div id="Controls" class="tabcontent">
-    <h3>Controls</h3>
-    <p>Control your character using the W A S D keys, and left click the mouse to shoot. You will automatically pick up anything you walk over,
-    and the camera is always locked onto your character.</p>
+<div id="Nick Macris" class="tabcontent">
+    <h3>Nick Macris</h3>
+    <p>The sage elder developer, Nick made our rockin smooth server. Can usually be found in the library fighting off librarians who just want to close
+        and go home to their families.
+    </p>
+    <img src="welcomeImages/nick.jpg">
 </div>
+<p>
+    RULES:
+    Welcome to Super Battle Arena! This is an always online multiplayer battle royale, where each player must fight
+    to stay alive the longest. Each player spawns in a random location on the map, and must pick up starts on the ground. If you collide with
+    another player, whoever has the least amount of stars will be eliminated.
 
-
-<img src="cover2.png">
+    Controls: Use W A S D to move, starts can be pickup up by running over them.
+</p>
 </body>
 </html>
