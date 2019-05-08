@@ -12,28 +12,41 @@ app.get('/',function(req,res){
 });
 
 var locList = [];
+var starList = [];
 
 server.lastPlayderID = 0;
 
 server.listen(process.env.PORT || 8081,function(){
     console.log('Listening on '+server.address().port);
     makeStone();
+    makeStar();
     console.log("listen and make stones:\n" + locList);
+    console.log("StarList: " + starList);
 });
 
 io.on('connection', function(socket)
 {
     socket.on('getStones', function(){
-        // console.log("sending to client socket: \n" + locList);
         socket.emit('giveStones', locList);
     });
+
+    socket.on('getStars', function(){
+        socket.emit('giveStars', starList)
+    });
+
+    // socket.on('levelup', function (starData){
+    //     //     var starx = starData[0];
+    //     //     var stary = stardata[1];
+    //     //     //level up player
+    //     // });
 
     socket.on('newplayer', function()
     {
         socket.player = {
             id: server.lastPlayderID++,
-            x: Math.floor(Math.random()*1500),
-            y: Math.floor(Math.random()*1500)
+            x: rndInRange(200, 1400),
+            y: rndInRange(200,1400),
+            level: 0
         };
         console.log("Player ID: " + socket.player.id);
         console.log("Player x: " + socket.player.x + ", Player y: " + socket.player.y);
@@ -46,6 +59,15 @@ io.on('connection', function(socket)
             socket.player.x = data.x;
             socket.player.y = data.y;
             io.emit('move',socket.player);
+
+            for(var i = 0; i < starList.length; i++){
+                if (starList[i][0] >= data.x - 70 && starList[i][0] <= data.x + 70 && starList[i][1] <= data.y + 70 && starList[i][1] >= data.y - 70){
+                    starList.splice(i,1);
+                    console.log("stars remaining: " + starList);
+                    makeStarOne();
+                    socket.emit('giveStars', starList)
+                }
+            }
         });
 
         socket.on('disconnect',function(){
@@ -61,10 +83,25 @@ io.on('connection', function(socket)
 
 function makeStone(){
     for(i=0; i<10; i++){
-        var x = rndInRange(200, 1300);
-        var y = rndInRange(200, 1300);
+        var x = rndInRange(100, 1500);
+        var y = rndInRange(100, 1500);
         locList.push([x,y]);
     }
+}
+
+function makeStar(){
+    for(var i=0; i < 5; i++){
+        //starID =starID + 1
+        var x = rndInRange(300, 1200);
+        var y = rndInRange(300, 1200);
+        starList.push([x,y]);
+    }
+}
+
+function makeStarOne(){
+     var x = rndInRange(300, 1200);
+     var y = rndInRange(300, 1200);
+     starList.push([x,y]);
 }
 
 function getAllPlayers(){
@@ -82,3 +119,4 @@ function rndInRange(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+

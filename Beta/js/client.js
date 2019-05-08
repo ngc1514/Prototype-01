@@ -21,12 +21,25 @@ Client.sendLocation = function(x,y){
 Client.getStones = function(){
     Client.socket.emit('getStones');
 };
-
 Client.socket.on('giveStones', function(data){
     for(var i =0; i<10; i++){
         Game.addNewStone(data[i][0], data[i][1]);
     }
 });
+
+Client.socket.on('giveStars', function(data){
+    for(var i = 0; i < 5; i++){
+        Game.addNewStar(data[i][0], data[i][1]);
+    }
+});
+
+Client.getStars = function(){
+    Client.socket.emit('getStars');
+};
+
+Client.levelUp = function(starData){
+    Client.socket.emit('levelup', starData);
+};
 
 Client.socket.on('newplayer', function(data){
     Game.addNewPlayer(data.id, data.x, data.y);
