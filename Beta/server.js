@@ -20,8 +20,8 @@ server.listen(process.env.PORT || 8081,function(){
     console.log('Listening on '+server.address().port);
     makeStone();
     makeStar();
-    console.log("listen and make stones:\n" + locList);
-    console.log("StarList: " + starList);
+    // console.log("listen and make stones:\n" + locList);
+    // console.log("StarList: " + starList);
 });
 
 io.on('connection', function(socket)
@@ -63,7 +63,7 @@ io.on('connection', function(socket)
             for(var i = 0; i < starList.length; i++){
                 if (starList[i][0] >= data.x - 70 && starList[i][0] <= data.x + 70 && starList[i][1] <= data.y + 70 && starList[i][1] >= data.y - 70){
                     starList.splice(i,1);
-                    console.log("stars remaining: " + starList);
+                    //console.log("stars remaining: " + starList);
                     makeStarOne();
                     socket.emit('giveStars', starList)
                 }

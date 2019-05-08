@@ -6,6 +6,8 @@ var star;
 var stars;
 var starList = [];
 
+var level = 0;
+
 var stone;
 var stones;
 
@@ -22,7 +24,8 @@ Game.preload = function()
 {
     game.load.image('background', 'assets/sprite/map.png');
     game.load.spritesheet('sprite', 'assets/sprite/move.png', 72, 62, 4);
-    game.load.spritesheet('stone', 'assets/sprite/swamp.png');
+    game.load.spritesheet('swamp', 'assets/sprite/swamp.png');
+    game.load.spritesheet('swamp2', 'assets/sprite/swamp2.jpg');
     game.load.image('star', 'assets/sprite/star.png');
 };
 
@@ -50,6 +53,7 @@ Game.create = function ()
     player.enableBody = true;
     game.camera.follow(player);
     player.renderable = false;
+    // player.addChild(level);
 
     cursors = this.input.keyboard.createCursorKeys();
 
@@ -72,10 +76,19 @@ Game.movePlayer = function(id,x,y){
 };
 
 Game.addNewStone = function(x,y){
-    stone = stones.create(x, y, 'stone');
-    game.physics.enable(stone, Phaser.Physics.ARCADE);
-    stone.body.immovable = true;
-    stone.scale.setTo(0.3,0.3);
+    var random_boolean = Math.random() >= 0.5;
+    if(random_boolean){
+        stone = stones.create(x, y, 'swamp');
+        game.physics.enable(stone, Phaser.Physics.ARCADE);
+        stone.body.immovable = true;
+        stone.scale.setTo(0.3,0.3);
+    }
+    else{
+        stone = stones.create(x, y, 'swamp');
+        game.physics.enable(stone, Phaser.Physics.ARCADE);
+        stone.body.immovable = true;
+        stone.scale.setTo(0.3,0.3);
+    }
 };
 
 Game.addNewStar = function(x,y){
