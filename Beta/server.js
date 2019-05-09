@@ -98,7 +98,7 @@ io.on('connection', function(socket)
 });
 
 function makeStone(){
-    for(i=0; i<8; i++){
+    for(i=0; i<10; i++){
         var x = rndInRange(100, 1300);
         var y = rndInRange(100, 1300);
         locList.push([x,y]);
