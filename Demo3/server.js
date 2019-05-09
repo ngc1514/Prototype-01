@@ -21,7 +21,7 @@ server.listen(process.env.PORT || 8081,function(){
     makeStone();
     makeStar();
     // console.log("listen and make stones:\n" + locList);
-    console.log("StarList: " + starList);
+    //console.log("StarList: " + starList);
 });
 
 io.on('connection', function(socket)
@@ -38,8 +38,8 @@ io.on('connection', function(socket)
     {
         socket.player = {
             id: server.lastPlayderID++,
-            x: rndInRange(200, 1400),
-            y: rndInRange(200,1400),
+            x: rndInRange(100, 1400),
+            y: rndInRange(100,1400),
             level: 1
         };
         console.log("Player ID: " + socket.player.id);
@@ -58,38 +58,32 @@ io.on('connection', function(socket)
                 if (starList[i][0] >= data.x - 70 && starList[i][0] <= data.x + 70 && starList[i][1] <= data.y + 70 && starList[i][1] >= data.y - 70){
                     starList.splice(i,1);
                     socket.player.level += 1;
-                    console.log("stars remaining: " + starList);
                     makeStarOne();
                     socket.broadcast.emit('resetStars');
                     socket.emit('giveStars', starList);
                     socket.emit('levelup', socket.player);
-                    //console.log("current level: " + socket.player.level);
-                    console.log("Player " + socket.player.id + "'s level is:" + socket.player.level + "\n");
-                }
-            }
-        });
 
-        socket.on('getRanking', function(){
-            var rankList = [];
-            var playerData = getAllPlayers();
-            for(i=0; i<Object.keys(playerData).length; i++){
-                if(typeof playerData[i].level === "undefined"){
-                }
-                else{
-                    rankList.push([playerData[i].id, playerData[i].level])
+                    var rankList = [];
+                    var playerData = getAllPlayers();
+                    for(i=0; i<Object.keys(playerData).length; i++)
+                    {
+                        rankList.push([playerData[i].id, playerData[i].level])
+                    }
+                    rankList.sort(function(x, y) {
+                        if (x[1] < y[1]) {
+                            return 1;
+                        }
+                        if (x[1] > y[1]) {
+                            return -1;
+                        }
+                        return 0;
+                    });
+                    //console.log("ranking: " + rankList);
+                    io.emit('rankList', rankList);
+                    // console.log("stars remaining: " + starList);
+                    // console.log("Player " + socket.player.id + "'s level is:" + socket.player.level + "\n");
                 }
             }
-            rankList.sort(function(x, y) {
-                if (x[1] < y[1]) {
-                    return 1;
-                }
-                if (x[1] > y[1]) {
-                    return -1;
-                }
-                return 0;
-            });
-            console.log("ranking: " + rankList);
-            io.emit('rankList', rankList);
         });
 
         socket.on('disconnect',function(){
@@ -104,9 +98,9 @@ io.on('connection', function(socket)
 });
 
 function makeStone(){
-    for(i=0; i<10; i++){
-        var x = rndInRange(100, 1500);
-        var y = rndInRange(100, 1500);
+    for(i=0; i<8; i++){
+        var x = rndInRange(100, 1300);
+        var y = rndInRange(100, 1300);
         locList.push([x,y]);
     }
 }
@@ -114,8 +108,8 @@ function makeStone(){
 function makeStar(){
     for(var i=0; i < 3; i++){
         //starID =starID + 1
-        var x = rndInRange(300, 1200);
-        var y = rndInRange(300, 1200);
+        var x = rndInRange(150, 1300);
+        var y = rndInRange(150, 1300);
         starList.push([x,y]);
     }
 }
@@ -124,7 +118,7 @@ function makeStarOne(){
     var x = rndInRange(300, 1200);
     var y = rndInRange(300, 1200);
     starList.push([x,y]);
-    console.log('Make new ');
+    //console.log('Make new ');
 }
 
 function getAllPlayers(){

@@ -22,7 +22,7 @@ Client.getStones = function(){
     Client.socket.emit('getStones');
 };
 Client.socket.on('giveStones', function(data){
-    for(var i =0; i<10; i++){
+    for(var i =0; i< data.length; i++){
         Game.addNewStone(data[i][0], data[i][1]);
     }
 });
@@ -40,10 +40,6 @@ Client.socket.on('giveStars', function(data){
 
 Client.getStars = function(){
     Client.socket.emit('getStars');
-};
-
-Client.getRanking = function(){
-    Client.socket.emit("getRanking");
 };
 
 Client.socket.on('rankList', function (rankList) {

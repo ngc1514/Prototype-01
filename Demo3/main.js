@@ -17,7 +17,7 @@ function createWindow () {
             webSecurity: false
         }
     });
-    mainWindow.setContentSize(1320, 760);
+    mainWindow.setContentSize(1280, 720);
 
     //mainWindow.loadFile('index.html');
     mainWindow.loadURL("http://localhost:8081");
