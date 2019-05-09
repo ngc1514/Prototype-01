@@ -153,25 +153,25 @@ Game.update = function()
 
     var hitButt = game.physics.arcade.collide(player, stars);
     if(cursors.up.isDown && (hitPlatform === false)){
-        player.y -= 7;
+        player.y -= 5;
         tempX = player.x;
         tempY = player.y;
         Client.sendLocation(tempX, tempY);
     }
     if(cursors.down.isDown && (hitPlatform === false)){
-        player.y += 7;
+        player.y += 5;
         tempX = player.x;
         tempY = player.y;
         Client.sendLocation(tempX, tempY);
     }
     if(cursors.left.isDown && (hitPlatform === false)){
-        player.x -= 7;
+        player.x -= 5;
         tempX = player.x;
         tempY = player.y;
         Client.sendLocation(tempX, tempY);
     }
     if(cursors.right.isDown && (hitPlatform === false)){
-        player.x += 7;
+        player.x += 5;
         tempX = player.x;
         tempY = player.y;
         Client.sendLocation(tempX, tempY);
