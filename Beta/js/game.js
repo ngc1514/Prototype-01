@@ -1,4 +1,5 @@
 var text;
+var text2;
 var player;
 var cursors;
 
@@ -22,10 +23,9 @@ Game.init = function(){
 
 Game.preload = function()
 {
-    game.load.image('background', 'assets/sprite/map.png');
+    game.load.image('background', 'assets/sprite/dirt.png');
     game.load.spritesheet('sprite', 'assets/sprite/move.png', 72, 62, 4);
     game.load.spritesheet('swamp', 'assets/sprite/swamp.png');
-    game.load.spritesheet('swamp2', 'assets/sprite/swamp2.jpg');
     game.load.image('star', 'assets/sprite/star.png');
 };
 
@@ -63,6 +63,13 @@ Game.create = function ()
         align: "center"
     });
     text.fixedToCamera = true;
+
+    text2 = game.add.text(40, 30, "Leaderboard: \n", {
+        font: "25px Arial",
+        fill: "#ff0044",
+        align: "center"
+    });
+    text2.fixedToCamera = true;
     Client.askNewPlayer();
 };
 
@@ -197,11 +204,14 @@ Game.update = function()
 
 function collectStar (player, star) {
     star.kill();
+    level += 1;
 }
+
 
 //debug text
 Game.showText = function () {
-    text.setText("Current Location: \n" + player.x + ", " + player.y + "\nTotal player: \n" + Object.keys(Game.playerMap).length);
+    text.setText("Current Location: \n" + player.x + ", " + player.y + "\nTotal player: \n" + Object.keys(Game.playerMap).length +
+        "\nPower: " + level + "\n ");
 };
 
 Game.spawnPlayer = function(){
