@@ -1,5 +1,6 @@
 var text;
 var text2;
+var text3;
 var player;
 var cursors;
 
@@ -53,9 +54,10 @@ Game.create = function ()
     player.enableBody = true;
     game.camera.follow(player);
     player.renderable = false;
-    // player.addChild(level);
 
     cursors = this.input.keyboard.createCursorKeys();
+
+    Client.askNewPlayer();
 
     text = game.add.text(1050, 30, "Current Location: \n", {
         font: "25px Arial",
@@ -64,22 +66,12 @@ Game.create = function ()
     });
     text.fixedToCamera = true;
 
-    text2 = game.add.text(40, 30, "Leaderboard: \n", {
+    text2 = game.add.text(1100, 260, "", {
         font: "25px Arial",
         fill: "#ff0044",
         align: "center"
     });
     text2.fixedToCamera = true;
-    Client.askNewPlayer();
-};
-
-Game.addNewPlayer = function(id, x, y){
-    Game.playerMap[id] = game.add.sprite(x, y,'sprite');
-};
-Game.movePlayer = function(id,x,y){
-    var newPlayer = Game.playerMap[id];
-    newPlayer.x = x;
-    newPlayer.y = y;
 };
 
 Game.addNewStone = function(x,y){
@@ -105,17 +97,31 @@ Game.addNewStar = function(x,y){
     star.body.immovable = true;
 };
 
-Game.removePlayer = function(id){
-    Game.playerMap[id].destroy();
-    delete Game.playerMap[id];
+function collectStar (player, star) {
+    star.kill();
+    level += 1;
+}
+
+Game.levelup = function(id, level){
+    Game.playerMap[id].level = level;
+    for(ply in Game.playerMap){
+        console.log(id + " level is: " + Game.playerMap[id].level)
+    }
+};
+
+Game.resetGroup = function(){
+    stars.removeAll();
+    console.log("removing alllllll")
 };
 
 //all the key listeners
 Game.update = function()
 {
-    // var hitPlatform = game.physics.arcade.collide(player, stones);
+    Game.getRanking();
+    Client.getStars();
+
     var hitPlatform = game.physics.arcade.collide(player, stones);
-    game.physics.arcade.overlap(player, stars, collectStar, null, this);
+    game.physics.arcade.collide(player, stars, collectStar, null, this);
 
     var hitButt = game.physics.arcade.collide(player, stars);
     if(cursors.up.isDown && (hitPlatform === false)){
@@ -202,21 +208,43 @@ Game.update = function()
     }
 };
 
-function collectStar (player, star) {
-    star.kill();
-    level += 1;
-}
-
-
 //debug text
 Game.showText = function () {
-    text.setText("Current Location: \n" + player.x + ", " + player.y + "\nTotal player: \n" + Object.keys(Game.playerMap).length +
-        "\nPower: " + level + "\n ");
+    text.setText("Current Location: \n" + player.x + ", " + player.y + "\nTotal player: \n" + Object.keys(Game.playerMap).length + "\n\nLeaderboard:\n");
+};
+
+Game.addNewPlayer = function(id, x, y){
+    Game.playerMap[id] = game.add.sprite(x, y,'sprite');
+    text3 = game.add.text(20, -30, "ID: " + id, {font: "17px Arial", fill: "#ffffff"});
+    Game.playerMap[id].addChild(text3);
+};
+
+Game.getRanking = function(){
+    Client.getRanking();
+};
+
+Game.showRanking = function(data){
+    var strRank = "";
+    for(i = 0; i<data.length; i++){
+        strRank += ("ID: " + data[i][0] +"\nLevel: " + data[i][1] + "\n")
+    }
+    text2.setText(strRank);
+};
+
+Game.movePlayer = function(id,x,y){
+    var newPlayer = Game.playerMap[id];
+    newPlayer.x = x;
+    newPlayer.y = y;
+};
+
+Game.removePlayer = function(id){
+    Game.playerMap[id].destroy();
+    delete Game.playerMap[id];
 };
 
 Game.spawnPlayer = function(){
-    var x = Math.floor(Math.random()*1280);
-    var y = Math.floor(Math.random()*720);
+    var x = Math.floor(Math.random()*1450);
+    var y = Math.floor(Math.random()*1450);
     return [x, y];
 };
 

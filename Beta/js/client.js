@@ -27,8 +27,13 @@ Client.socket.on('giveStones', function(data){
     }
 });
 
+Client.socket.on('resetStars', function () {
+    Game.resetGroup();
+});
+
 Client.socket.on('giveStars', function(data){
-    for(var i = 0; i < 5; i++){
+    //need to reset star list
+    for(var i = 0; i < data.length; i++){
         Game.addNewStar(data[i][0], data[i][1]);
     }
 });
@@ -37,9 +42,21 @@ Client.getStars = function(){
     Client.socket.emit('getStars');
 };
 
+Client.getRanking = function(){
+    Client.socket.emit("getRanking");
+};
+
+Client.socket.on('rankList', function (rankList) {
+    Game.showRanking(rankList);
+});
+
 Client.levelUp = function(starData){
     Client.socket.emit('levelup', starData);
 };
+
+Client.socket.on('levelup', function(data){
+    Game.levelup(data.id, data.level);
+});
 
 Client.socket.on('newplayer', function(data){
     Game.addNewPlayer(data.id, data.x, data.y);
