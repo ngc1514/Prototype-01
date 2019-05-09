@@ -106,7 +106,7 @@ function makeStone(){
 }
 
 function makeStar(){
-    for(var i=0; i < 3; i++){
+    for(var i=0; i < 1; i++){
         //starID =starID + 1
         var x = rndInRange(150, 1300);
         var y = rndInRange(150, 1300);
