@@ -17,5 +17,5 @@ function makeStone(){
 makeStone()
 
 QUnit.test( "hello test", function( assert ) {
-    assert.ok( locList.length == "1", "Passed!" );
+    assert.ok( locList.length == 1, "Passed!" );
 });
