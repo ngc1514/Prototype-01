@@ -48,6 +48,9 @@ Game.create = function ()
     Game.playerMap = {};
     var testKey= game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     testKey.onDown.add(Client.sendTest, this);
+    //var touch = game.input.touch.addKey(Phaser.Touch.ENTER);
+    //touch.onDown.add(Client.sendTest, this);
+    //^^^ touch controls
 
     game.add.tileSprite(0, 0, 1400, 1400, 'background');
     game.world.setBounds(0, 0, 1400, 1400);
