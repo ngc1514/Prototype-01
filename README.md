@@ -1,5 +1,5 @@
 # Prototype-01
-Game in development <br />
+No longer active <br />
 Engine: Phaser 2.12 <br />
 Web server: NodeJS <br />
 <br />
